@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Aklilul Hikam</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-[#030712] text-slate-200 selection:bg-blue-500/30">
+
+    <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
+        <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-500/10 blur-[120px] rounded-full"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-indigo-500/10 blur-[120px] rounded-full"></div>
+        <div class="grid-overlay"></div>
+    </div>
+
+    <nav class="fixed top-0 w-full z-50 glass-nav border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <div class="text-xl font-bold tracking-tighter text-white uppercase">
+                <span class="text-blue-400">Muhammad Aklilul Hikam</span>
+            </div>
+            
+            <ul class="hidden md:flex gap-8 text-xs font-semibold uppercase tracking-widest text-slate-400">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#portfolio" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+
+            <div class="md:hidden cursor-pointer p-2" id="menu-toggle">
+                <i data-lucide="menu" class="w-6 h-6 text-white"></i>
+            </div>
+        </div>
+    </nav>
+
+    <div id="mobile-menu" class="fixed inset-0 z-[60] bg-[#030712] flex flex-col items-center justify-center gap-8 text-xl font-bold translate-x-full transition-transform duration-500 ease-in-out">
+        <button id="close-menu" class="absolute top-8 right-8 p-2 text-white hover:scale-110 transition-transform">
+            <i data-lucide="x" class="w-8 h-8"></i>
+        </button>
+        <a href="#home" class="mobile-link text-white">Home</a>
+        <a href="#about" class="mobile-link text-white">About</a>
+        <a href="#portfolio" class="mobile-link text-white">Projects</a>
+        <a href="#contact" class="mobile-link text-white">Contact</a>
+    </div>
+
+    <section id="home" class="min-h-screen flex items-center justify-center pt-20 px-6 relative overflow-hidden">
+        <div class="max-w-4xl text-center z-10">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-blue-500/20 bg-blue-500/5 text-blue-400 text-[10px] font-bold tracking-[0.2em] mb-8 uppercase">
+                <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+                Web3 Explorer
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight leading-tight">
+                Muhammad Aklilul Hikam <br>
+                <span id="typing-text" class="text-gradient"></span>
+            </h1>
+            <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed font-light">
+                Membantu menciptakan ekosistem digital yang efisien melalui pemanfaatan teknologi.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#portfolio" class="btn-primary group">
+                    Lihat Proyek <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                </a>
+                <a href="#contact" class="btn-secondary">Hubungi Saya</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-24 px-6 relative">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="relative group mx-auto lg:mx-0 max-w-md w-full">
+                    <div class="absolute -inset-2 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-3xl blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+                    <div class="relative rounded-3xl overflow-hidden aspect-square glass border border-white/10 shadow-2xl profile-anim">
+                        <img src="/assets/images/profile.jpg" alt="Muhammad Aklilul Hikam" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
+                    </div>
+                </div>
+
+                <div class="fade-up">
+                    <h2 class="section-heading mb-8">About Me</h2>
+                    <div class="space-y-6 text-slate-400 leading-relaxed text-lg font-light">
+                        <p>
+                           Halo! Saya adalah mahasiswa <strong>Sistem Informasi Bisnis</strong> di Politeknik Negeri Malang. Saya adalah seorang individu yang antusias dalam menjembatani dunia teknologi dengan strategi bisnis modern.
+                        </p>
+                        <p>
+                            Perjalanan saya di dunia digital dimulai dari ketertarikan pada pengembangan web, yang kemudian berkembang pesat saat saya mengenal ekosistem Web3 dan Cryptocurrency. Berawal dari eksplorasi di dunia airdrop, saya justru menemukan minat yang mendalam pada teknologi blockchain dan bagaimana desentralisasi dapat mengubah masa depan ekonomi digital.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-12">
+                        <div class="info-card">
+                            <span class="info-label">Nama Lengkap</span>
+                            <span class="info-value">Muhammad Aklilul Hikam</span>
+                        </div>
+                        <div class="info-card">
+                            <span class="info-label">Usia</span>
+                            <span class="info-value">20 Tahun</span>
+                        </div>
+                        <div class="info-card">
+                            <span class="info-label">Lokasi</span>
+                            <span class="info-value">Malang, Indonesia</span>
+                        </div>
+                        <div class="info-card">
+                            <span class="info-label">Email</span>
+                            <span class="info-value">aklilhikam6@gmail.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="py-24 px-6 bg-white/[0.01]">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="section-heading mb-4">Selected Projects</h2>
+                <p class="text-slate-500 uppercase tracking-widest text-xs font-semibold">Arsip kontribusi dan eksperimen Web3</p>
+            </div>
+            
+            <div id="portfolio-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 px-6">
+        <div class="max-w-5xl mx-auto glass p-8 md:p-16 rounded-[2.5rem] border border-white/5 relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-80 h-80 bg-blue-500/5 blur-[100px] pointer-events-none"></div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 relative z-10">
+                <div>
+                    <h2 class="text-4xl font-bold text-white mb-6">Mari Berkolaborasi</h2>
+                    <p class="text-slate-400 mb-10 leading-relaxed text-lg font-light">
+                        Terbuka untuk diskusi mengenai pengembangan Web3, riset Blockchain, atau peluang kolaborasi teknis lainnya.
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <a href="mailto:aklilhikam6@gmail.com" class="contact-link group">
+                            <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-blue-500/10 transition-colors">
+                                <i data-lucide="mail" class="w-5 h-5 group-hover:text-blue-400"></i>
+                            </div>
+                            <span>aklilhikam6@gmail.com</span>
+                        </a>
+                        <a href="https://x.com/0xRahvanaa" target="_blank" class="contact-link group">
+                            <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-blue-500/10 transition-colors">
+                                <i data-lucide="twitter" class="w-5 h-5 group-hover:text-blue-400"></i>
+                            </div>
+                            <span>@0xRahvanaa</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/muhammad-aklilul-hikam-541019331/" target="_blank" class="contact-link group">
+                            <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-blue-500/10 transition-colors">
+                                <i data-lucide="linkedin" class="w-5 h-5 group-hover:text-blue-400"></i>
+                            </div>
+                            <span>LinkedIn Profile</span>
+                        </a>
+                    </div>
+                </div>
+
+                <form id="contact-form" class="space-y-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <input type="text" id="name" placeholder="Nama" class="form-input" required>
+                        <input type="email" id="email" placeholder="Email" class="form-input" required>
+                    </div>
+                    <textarea id="message" rows="5" placeholder="Pesan Anda..." class="form-input resize-none" required></textarea>
+                    <button type="submit" id="submit-btn" class="btn-primary w-full justify-center py-4 text-sm tracking-widest uppercase font-bold">Kirim Pesan</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 border-t border-white/5 text-center px-6">
+        <p class="text-slate-500 text-sm tracking-widest uppercase font-medium">
+            &copy; 2026 Muhammad Aklilul Hikam. All rights reserved.
+        </p>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
