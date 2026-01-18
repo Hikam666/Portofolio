@@ -78,8 +78,6 @@ function renderPortfolio() {
 function initFormHandler() {
     const contactForm = document.getElementById('contact-form');
     if (!contactForm) return;
-    const BOT_TOKEN = '8433536265:AAGjpxZ4nUYMVi7iWUwlQN8U4MVbXHLKElA'; 
-    const CHAT_ID = '5729527250';
 
     contactForm.onsubmit = async (e) => {
         e.preventDefault();
@@ -92,20 +90,12 @@ function initFormHandler() {
         btn.innerHTML = "Sedang Mengirim...";
         btn.disabled = true;
 
-        const text = `<b>📩 Pesan Baru dari Website</b>\n\n` +
-                     `<b>Nama:</b> ${name}\n` +
-                     `<b>Email:</b> ${email}\n\n` +
-                     `<b>Isi Pesan:</b>\n<i>${message}</i>`;
-
         try {
-            const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+            // Mengirim ke API internal kita di Vercel
+            const response = await fetch('/api/contact', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    chat_id: CHAT_ID,
-                    text: text,
-                    parse_mode: 'HTML'
-                })
+                body: JSON.stringify({ name, email, message })
             });
 
             if (response.ok) {
@@ -113,7 +103,7 @@ function initFormHandler() {
                 btn.classList.add('bg-green-600', 'text-white');
                 contactForm.reset();
             } else {
-                throw new Error('Gagal mengirim ke API');
+                throw new Error('Gagal mengirim');
             }
         } catch (error) {
             btn.innerHTML = "Gagal Mengirim!";
