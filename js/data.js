@@ -22,5 +22,13 @@ const portfolioData = [
     description: "Platform arsip digital dan landing page personal untuk publikasi tulisan saya.",
     link: "https://arsip-hikam.vercel.app/",
     icon: "book-open"
+  },
+  {
+    id: 4,
+    title: "Kalkulator Simulasi Investasi dan Inflasi",
+    category: "Digital Tool",
+    description: "Kalkulator untuk mensimulasikan investasi dan inflasi secara interaktif.",
+    link: "https://kalkulator-simulasi.vercel.app/",
+    icon: "calculator"
   }
 ];
