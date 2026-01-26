@@ -30,5 +30,13 @@ const portfolioData = [
     description: "Kalkulator untuk mensimulasikan investasi dan inflasi secara interaktif.",
     link: "https://kalkulator-simulasi.vercel.app/",
     icon: "calculator"
+  },
+  {
+    id: 5,
+    title: "Katalog TStore",
+    category: "Website E-Commerce",
+    description: "Katalog produk untuk toko product digital dengan tema Breaking Bad.",
+    link: "https://katalog-tstore.vercel.app/",
+    icon: "shopping-bag"
   }
 ];
