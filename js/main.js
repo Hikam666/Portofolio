@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initThemeToggle();
     initParticles();
     initSkillBars();
+    initArticleMetrics();
     initCursorFollower();
     if (typeof lucide !== 'undefined') {
         lucide.createIcons();
@@ -65,11 +66,11 @@ function initTypingEffect() {
 
         if (!isDeleting && charIndex === currentRole.length) {
             isDeleting = true;
-            typeSpeed = 2000; // Pause saat selesai mengetik
+            typeSpeed = 2000; 
         } else if (isDeleting && charIndex === 0) {
             isDeleting = false;
             roleIndex = (roleIndex + 1) % roles.length;
-            typeSpeed = 500; // Pause sebelum kata baru
+            typeSpeed = 500; 
         }
 
         setTimeout(type, typeSpeed);
@@ -97,16 +98,50 @@ function renderPortfolio() {
     
     if (typeof lucide !== 'undefined') lucide.createIcons();
 }
+function initArticleMetrics() {
+    const portfolioGrid = document.getElementById('portfolio-grid');
+    if (!portfolioGrid || typeof metricsData === 'undefined') return;
+
+    const section = document.createElement('section');
+    section.className = 'py-20 px-6 max-w-6xl mx-auto relative z-10';
+    section.innerHTML = `
+        <h2 class="section-heading mb-12 fade-up">Article <span class="text-gradient">Metrics</span></h2>
+        <div id="metrics-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+    `;
+    portfolioGrid.parentElement.after(section);
+    const grid = document.getElementById('metrics-grid');
+    const formatNum = (n) => new Intl.NumberFormat('en-US', { notation: "compact", maximumFractionDigits: 1 }).format(n);
+    grid.innerHTML = metricsData.map((item, i) => `
+        <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="metric-card fade-up" style="transition-delay: ${i * 100}ms; text-decoration: none;">
+            <div class="absolute top-4 right-4 opacity-10">
+                <i data-lucide="${item.type === 'tweet' ? 'twitter' : 'file-text'}" class="w-16 h-16"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white z-10 mb-8 pr-8 leading-snug">${item.title}</h3>
+            
+            <div class="mt-auto flex items-center gap-6 z-10 border-t border-white/5 pt-4">
+                <div class="metric-stat-item" title="Views">
+                    <i data-lucide="eye" class="w-4 h-4 text-blue-400"></i>
+                    <span class="font-mono">${formatNum(item.views)}</span>
+                </div>
+                <div class="metric-stat-item" title="Likes">
+                    <i data-lucide="heart" class="w-4 h-4 text-pink-500"></i>
+                    <span class="font-mono">${formatNum(item.likes)}</span>
+                </div>
+                <div class="metric-stat-item" title="${item.type === 'tweet' ? 'Retweets' : 'Shares'}">
+                    <i data-lucide="${item.type === 'tweet' ? 'repeat' : 'share-2'}" class="w-4 h-4 text-green-400"></i>
+                    <span class="font-mono">${formatNum(item.shares)}</span>
+                </div>
+            </div>
+        </a>
+    `).join('');
+}
 
 function initSkillBars() {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const bar = entry.target;
-                // Ambil target width dari style inline atau data attribute
                 const targetWidth = bar.getAttribute('data-width') || bar.style.width;
-                
-                // Reset ke 0 lalu animasi ke target
                 bar.style.width = '0%';
                 setTimeout(() => {
                     bar.style.width = targetWidth;
@@ -116,13 +151,11 @@ function initSkillBars() {
             }
         });
     }, { threshold: 0.2 });
-
-    // Target elemen dengan class .skill-progress
     document.querySelectorAll('.skill-progress').forEach(bar => {
         if (!bar.getAttribute('data-width')) {
             bar.setAttribute('data-width', bar.style.width);
         }
-        bar.style.width = '0%'; // Set awal 0
+        bar.style.width = '0%'; 
         observer.observe(bar);
     });
 }
@@ -134,7 +167,7 @@ function initParticles() {
     canvas.style.left = '0';
     canvas.style.width = '100%';
     canvas.style.height = '100%';
-    canvas.style.zIndex = '0'; // Di belakang konten (konten z-index: 2)
+    canvas.style.zIndex = '0'; 
     canvas.style.pointerEvents = 'none';
     document.body.prepend(canvas);
 
@@ -159,7 +192,7 @@ function initParticles() {
 
     function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = 'rgba(59, 130, 246, 0.15)'; // Blue primary transparent
+        ctx.fillStyle = 'rgba(59, 130, 246, 0.15)'; 
         
         particles.forEach(p => {
             p.x += Math.cos(p.d) * 0.2;
@@ -194,7 +227,6 @@ function initFormHandler() {
         btn.disabled = true;
 
         try {
-            // Mengirim ke API internal kita di Vercel
             const response = await fetch('/api/contact', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -242,15 +274,11 @@ function initScrollObserver() {
 }
 
 function initLoader() {
-    // 1. Inject Lottie Player Script
     const script = document.createElement('script');
     script.src = "https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js";
     document.head.appendChild(script);
-
-    // 2. Create Loader Container
     const loader = document.createElement('div');
     loader.id = 'loader-container';
-    // Menggunakan animasi Tech/Blue yang sesuai tema
     loader.innerHTML = `
         <lottie-player 
             src="https://assets3.lottiefiles.com/packages/lf20_w51pcehl.json" 
@@ -262,14 +290,12 @@ function initLoader() {
         </lottie-player>
     `;
     document.body.prepend(loader);
-
-    // 3. Hide loader when window loaded
     window.addEventListener('load', () => {
         setTimeout(() => {
             loader.style.opacity = '0';
             loader.style.visibility = 'hidden';
             setTimeout(() => loader.remove(), 500);
-        }, 2000); // Minimal tampil 2 detik agar animasi terlihat
+        }, 2000); 
     });
 }
 
@@ -282,8 +308,6 @@ function initThemeToggle() {
 
     const html = document.documentElement;
     const savedTheme = localStorage.getItem('theme');
-    
-    // Apply saved theme
     if (savedTheme === 'light') {
         html.setAttribute('data-theme', 'light');
         btn.innerHTML = '<i data-lucide="moon" class="w-6 h-6"></i>';

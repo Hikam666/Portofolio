@@ -40,3 +40,33 @@ const portfolioData = [
     icon: "shopping-bag"
   }
 ];
+
+const metricsData = [
+  {
+    id: 101,
+    title: "Memahami Scarcity: Mengapa Rencana Thanos Justru Menghancurkan Ekonomi",
+    views: 3000,
+    likes: 30,
+    shares: 15,
+    type: 'article',
+    link: "https://x.com/0xRahvanaa/status/2015782815124819979?s=20"
+  },
+  {
+    id: 102,
+    title: "Masa Depan Web3 di Indonesia",
+    views: 660,
+    likes: 0,
+    shares: 0,
+    type: 'article',
+    link: "https://www.kompasiana.com/hiiikam/647700a408a8b50524357193/suku-bajo-penyelam-terkuat-sang-penjelajah-samudra"
+  },
+  {
+    id: 103,
+    title: "Tweet: Thread Roadmap Developer",
+    views: 1491,
+    likes: 0,
+    shares: 0,
+    type: 'article',
+    link: "https://www.kompasiana.com/hiiikam/6419aaf44addee21a761e183/kemunculan-oarfish-dan-mitos-bencana"
+  }
+];
