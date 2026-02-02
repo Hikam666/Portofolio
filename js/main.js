@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
+    initLoader();
+    initThemeToggle();
     initCursorFollower();
     if (typeof lucide !== 'undefined') {
         lucide.createIcons();
@@ -136,4 +138,68 @@ function initScrollObserver() {
         el.classList.add('fade-up');
         observer.observe(el);
     });
+}
+
+function initLoader() {
+    // 1. Inject Lottie Player Script
+    const script = document.createElement('script');
+    script.src = "https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js";
+    document.head.appendChild(script);
+
+    // 2. Create Loader Container
+    const loader = document.createElement('div');
+    loader.id = 'loader-container';
+    // Menggunakan animasi Tech/Blue yang sesuai tema
+    loader.innerHTML = `
+        <lottie-player 
+            src="https://assets3.lottiefiles.com/packages/lf20_w51pcehl.json" 
+            background="transparent" 
+            speed="1" 
+            style="width: 300px; height: 300px;" 
+            loop 
+            autoplay>
+        </lottie-player>
+    `;
+    document.body.prepend(loader);
+
+    // 3. Hide loader when window loaded
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            loader.style.opacity = '0';
+            loader.style.visibility = 'hidden';
+            setTimeout(() => loader.remove(), 500);
+        }, 2000); // Minimal tampil 2 detik agar animasi terlihat
+    });
+}
+
+function initThemeToggle() {
+    const btn = document.createElement('button');
+    btn.id = 'theme-toggle';
+    btn.innerHTML = '<i data-lucide="sun" class="w-6 h-6"></i>';
+    btn.setAttribute('aria-label', 'Ganti Tema');
+    document.body.appendChild(btn);
+
+    const html = document.documentElement;
+    const savedTheme = localStorage.getItem('theme');
+    
+    // Apply saved theme
+    if (savedTheme === 'light') {
+        html.setAttribute('data-theme', 'light');
+        btn.innerHTML = '<i data-lucide="moon" class="w-6 h-6"></i>';
+    }
+
+    btn.onclick = () => {
+        const isLight = html.getAttribute('data-theme') === 'light';
+        const newTheme = isLight ? 'dark' : 'light';
+        
+        html.setAttribute('data-theme', isLight ? '' : 'light');
+        if (isLight) html.removeAttribute('data-theme');
+        
+        localStorage.setItem('theme', newTheme);
+        btn.innerHTML = isLight ? '<i data-lucide="sun" class="w-6 h-6"></i>' : '<i data-lucide="moon" class="w-6 h-6"></i>';
+        
+        if (typeof lucide !== 'undefined') lucide.createIcons();
+    };
+    
+    if (typeof lucide !== 'undefined') lucide.createIcons();
 }

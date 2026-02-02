@@ -437,6 +437,86 @@ h1, h2, h3, .nav-link, .btn-primary, .section-heading {
 .btn-secondary:hover {
     background: rgba(255, 255, 255, 0.08);
 }
+
+/* --- THEME & LOADER ADDITIONS --- */
+
+/* Light Mode Overrides */
+[data-theme="light"] {
+    --navy-dark: #f8fafc;
+    --navy-card: #ffffff;
+    --slate-text: #475569;
+    --glass-border: rgba(0, 0, 0, 0.1);
+    color: #0f172a;
+}
+
+[data-theme="light"] .glass-nav {
+    background: rgba(255, 255, 255, 0.85);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+[data-theme="light"] .nav-link:hover {
+    color: var(--blue-primary);
+}
+
+[data-theme="light"] .btn-primary {
+    background: var(--navy-dark);
+    color: white;
+    border-color: var(--navy-dark);
+}
+
+[data-theme="light"] .btn-secondary {
+    background: rgba(0,0,0,0.05);
+    border-color: rgba(0,0,0,0.1);
+    color: #0f172a;
+}
+
+[data-theme="light"] .info-card,
+[data-theme="light"] .portfolio-card {
+    box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .info-value,
+[data-theme="light"] .portfolio-card h3 {
+    color: #0f172a;
+}
+
+/* Loader Styles */
+#loader-container {
+    position: fixed;
+    inset: 0;
+    background: var(--navy-dark);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+/* Theme Toggle Button */
+#theme-toggle {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    background: var(--navy-card);
+    border: 1px solid var(--glass-border);
+    color: var(--blue-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 50;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="light"] #theme-toggle {
+    background: white;
+    color: #f59e0b;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
 :root {
     --blue-primary: #3b82f6;
     --navy-dark: #030712;
