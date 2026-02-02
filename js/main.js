@@ -103,9 +103,9 @@ function initArticleMetrics() {
     if (!portfolioGrid || typeof metricsData === 'undefined') return;
 
     const section = document.createElement('section');
-    section.className = 'py-20 px-6 max-w-6xl mx-auto relative z-10';
+    section.className = portfolioGrid.parentElement.className;
     section.innerHTML = `
-        <h2 class="section-heading mb-12 fade-up">Article <span class="text-gradient">Metrics</span></h2>
+        <h2 class="section-heading mb-12 fade-up">My <span class="text-gradient">Article</span></h2>
         <div id="metrics-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
     `;
     portfolioGrid.parentElement.after(section);

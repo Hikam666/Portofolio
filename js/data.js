@@ -53,7 +53,7 @@ const metricsData = [
   },
   {
     id: 102,
-    title: "Masa Depan Web3 di Indonesia",
+    title: "Suku Bajo: Penyelam Terkuat, Sang Penjelajah Samudra",
     views: 660,
     likes: 0,
     shares: 0,
@@ -62,7 +62,7 @@ const metricsData = [
   },
   {
     id: 103,
-    title: "Tweet: Thread Roadmap Developer",
+    title: "Kemunculan Oarfish dan Mitos Bencana",
     views: 1491,
     likes: 0,
     shares: 0,
