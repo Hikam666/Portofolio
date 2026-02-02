@@ -18,6 +18,12 @@ html {
     scroll-behavior: smooth;
 }
 
+/* Ensure content sits above background particles */
+section, main, footer, header {
+    position: relative;
+    z-index: 2;
+}
+
 body {
     font-family: 'Inter', sans-serif;
     background-color: var(--navy-dark);
@@ -393,9 +399,9 @@ h1, h2, h3, .nav-link, .btn-primary, .section-heading {
 }
 
 .portfolio-card:hover {
-    border-color: rgba(59, 130, 246, 0.5);
-    transform: translateY(-12px) scale(1.02);
-    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+    border-color: var(--blue-primary);
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 20px 40px -15px rgba(59, 130, 246, 0.4); /* Glow Effect */
 }
 
 /* Custom Cursor Glow */
@@ -436,6 +442,13 @@ h1, h2, h3, .nav-link, .btn-primary, .section-heading {
 
 .btn-secondary:hover {
     background: rgba(255, 255, 255, 0.08);
+}
+
+/* Skill Bar Animation */
+.skill-progress {
+    transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+    position: relative;
+    overflow: hidden;
 }
 
 /* --- THEME & LOADER ADDITIONS --- */

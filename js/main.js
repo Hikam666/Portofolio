@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     initLoader();
     initThemeToggle();
+    initParticles();
+    initSkillBars();
     initCursorFollower();
     if (typeof lucide !== 'undefined') {
         lucide.createIcons();
@@ -40,20 +42,39 @@ function initCursorFollower() {
 function initTypingEffect() {
     const target = document.getElementById('typing-text');
     if (!target) return;
+
+    const roles = ["Web Developer", "Blockchain Enthusiast", "Student", "Tech Explorer"];
+    let roleIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
     
-    const text = "Selamat datang di portofolio saya.";
-    let i = 0;
-    target.innerHTML = "";
     target.classList.add('typing-cursor');
 
     function type() {
-        if (i < text.length) {
-            target.innerHTML += text.charAt(i);
-            i++;
-            setTimeout(type, 100);
+        const currentRole = roles[roleIndex];
+        let typeSpeed = 100;
+
+        if (isDeleting) {
+            target.textContent = currentRole.substring(0, charIndex - 1);
+            charIndex--;
+            typeSpeed = 50;
+        } else {
+            target.textContent = currentRole.substring(0, charIndex + 1);
+            charIndex++;
         }
+
+        if (!isDeleting && charIndex === currentRole.length) {
+            isDeleting = true;
+            typeSpeed = 2000; // Pause saat selesai mengetik
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            roleIndex = (roleIndex + 1) % roles.length;
+            typeSpeed = 500; // Pause sebelum kata baru
+        }
+
+        setTimeout(type, typeSpeed);
     }
-    setTimeout(type, 1000);
+    type();
 }
 
 function renderPortfolio() {
@@ -75,6 +96,86 @@ function renderPortfolio() {
     `).join('');
     
     if (typeof lucide !== 'undefined') lucide.createIcons();
+}
+
+function initSkillBars() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const bar = entry.target;
+                // Ambil target width dari style inline atau data attribute
+                const targetWidth = bar.getAttribute('data-width') || bar.style.width;
+                
+                // Reset ke 0 lalu animasi ke target
+                bar.style.width = '0%';
+                setTimeout(() => {
+                    bar.style.width = targetWidth;
+                }, 100);
+                
+                observer.unobserve(bar);
+            }
+        });
+    }, { threshold: 0.2 });
+
+    // Target elemen dengan class .skill-progress
+    document.querySelectorAll('.skill-progress').forEach(bar => {
+        if (!bar.getAttribute('data-width')) {
+            bar.setAttribute('data-width', bar.style.width);
+        }
+        bar.style.width = '0%'; // Set awal 0
+        observer.observe(bar);
+    });
+}
+
+function initParticles() {
+    const canvas = document.createElement('canvas');
+    canvas.style.position = 'fixed';
+    canvas.style.top = '0';
+    canvas.style.left = '0';
+    canvas.style.width = '100%';
+    canvas.style.height = '100%';
+    canvas.style.zIndex = '0'; // Di belakang konten (konten z-index: 2)
+    canvas.style.pointerEvents = 'none';
+    document.body.prepend(canvas);
+
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+
+    const resize = () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    };
+    window.addEventListener('resize', resize);
+    resize();
+
+    for(let i=0; i<30; i++) {
+        particles.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            r: Math.random() * 2,
+            d: Math.random() * Math.PI * 2
+        });
+    }
+
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = 'rgba(59, 130, 246, 0.15)'; // Blue primary transparent
+        
+        particles.forEach(p => {
+            p.x += Math.cos(p.d) * 0.2;
+            p.y += Math.sin(p.d) * 0.2;
+            if(p.x < 0) p.x = canvas.width;
+            if(p.x > canvas.width) p.x = 0;
+            if(p.y < 0) p.y = canvas.height;
+            if(p.y > canvas.height) p.y = 0;
+            
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fill();
+        });
+        requestAnimationFrame(animate);
+    }
+    animate();
 }
 
 function initFormHandler() {
