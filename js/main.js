@@ -105,7 +105,7 @@ function initArticleMetrics() {
     const section = document.createElement('section');
     section.className = portfolioGrid.parentElement.className;
     section.innerHTML = `
-        <h2 class="section-heading mb-12 fade-up">My <span class="text-gradient">Article</span></h2>
+        <h2 class="section-heading mt-12 mb-12 fade-up">My <span class="text-gradient">Article</span></h2>
         <div id="metrics-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
     `;
     portfolioGrid.parentElement.after(section);
