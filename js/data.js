@@ -45,7 +45,7 @@ const metricsData = [
   {
     id: 101,
     title: "Memahami Scarcity: Mengapa Rencana Thanos Justru Menghancurkan Ekonomi",
-    views: 3000,
+    views: 3700,
     likes: 30,
     shares: 15,
     type: 'article',
@@ -68,5 +68,14 @@ const metricsData = [
     shares: 0,
     type: 'article',
     link: "https://www.kompasiana.com/hiiikam/6419aaf44addee21a761e183/kemunculan-oarfish-dan-mitos-bencana"
+  },
+  {
+    id: 104,
+    title: "Memahami Ekonomi lewat The Last of Us",
+    views: 2,
+    likes: 0,
+    shares: 0,
+    type: 'article',
+    link: "https://x.com/0xRahvanaa/status/2019439347901297057?s=20"
   }
 ];
