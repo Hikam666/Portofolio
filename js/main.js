@@ -44,7 +44,7 @@ function initTypingEffect() {
     const target = document.getElementById('typing-text');
     if (!target) return;
 
-    const roles = ["Web Developer", "Blockchain Enthusiast", "Student", "Tech Explorer"];
+    const roles = ["Blockchain Enthusiast", "Student", "Tech Explorer"];
     let roleIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
