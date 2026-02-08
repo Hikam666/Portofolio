@@ -72,10 +72,19 @@ const metricsData = [
   {
     id: 104,
     title: "Memahami Ekonomi lewat The Last of Us",
-    views: 2,
+    views: 119,
+    likes: 11,
+    shares: 9,
+    type: 'article',
+    link: "https://x.com/0xRahvanaa/status/2019439347901297057?s=20"
+  },
+  {
+    id: 105,
+    title: "Kapitalis Lu!: Mengenal Kapitalisme Lewat Ambisi Mr. Krabs",
+    views: 2300,
     likes: 0,
     shares: 0,
     type: 'article',
-    link: "https://x.com/0xRahvanaa/status/2019439347901297057?s=20"
+    link: "https://x.com/0xRahvanaa/status/2020466307813036159?s=20"
   }
 ];
