@@ -86,5 +86,14 @@ const metricsData = [
     shares: 0,
     type: 'article',
     link: "https://x.com/0xRahvanaa/status/2020466307813036159?s=20"
+  },
+  {
+    id: 106,
+    title: "Memahami Blockchain: Menjawab Kebingungan saya dulu.",
+    views: 450,
+    likes: 5,
+    shares: 3,
+    type: 'article',
+    link: "https://x.com/0xRahvanaa/status/2021225113644130507?s=20"
   }
 ];
