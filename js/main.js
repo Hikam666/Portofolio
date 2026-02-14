@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
     initLoader();
-    initThemeToggle();
     initParticles();
     initSkillBars();
     initArticleMetrics();
@@ -83,8 +82,8 @@ function renderPortfolio() {
     if (!grid || typeof portfolioData === 'undefined') return;
 
     grid.innerHTML = portfolioData.map((item, index) => `
-        <div class="portfolio-card fade-up" style="transition-delay: ${index * 150}ms">
-            <div class="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center text-blue-400 mb-6 group-hover:scale-110 transition-all duration-300">
+        <div class="portfolio-card fade-up group hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300" style="transition-delay: ${index * 150}ms">
+            <div class="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center text-blue-400 mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
                 <i data-lucide="${item.icon}" class="w-6 h-6"></i>
             </div>
             <span class="text-[10px] font-bold tracking-widest text-slate-500 uppercase mb-2 block">${item.category}</span>
@@ -181,26 +180,25 @@ function initParticles() {
     window.addEventListener('resize', resize);
     resize();
 
-    for(let i=0; i<30; i++) {
+    for(let i=0; i<50; i++) {
         particles.push({
             x: Math.random() * canvas.width,
             y: Math.random() * canvas.height,
-            r: Math.random() * 2,
-            d: Math.random() * Math.PI * 2
+            r: Math.random() * 2 + 1,
+            v: Math.random() * 2 + 1
         });
     }
 
     function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = 'rgba(59, 130, 246, 0.15)'; 
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.6)'; 
         
         particles.forEach(p => {
-            p.x += Math.cos(p.d) * 0.2;
-            p.y += Math.sin(p.d) * 0.2;
-            if(p.x < 0) p.x = canvas.width;
-            if(p.x > canvas.width) p.x = 0;
-            if(p.y < 0) p.y = canvas.height;
-            if(p.y > canvas.height) p.y = 0;
+            p.y += p.v;
+            if(p.y > canvas.height) {
+                p.y = 0;
+                p.x = Math.random() * canvas.width;
+            }
             
             ctx.beginPath();
             ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
@@ -297,34 +295,4 @@ function initLoader() {
             setTimeout(() => loader.remove(), 500);
         }, 2000); 
     });
-}
-
-function initThemeToggle() {
-    const btn = document.createElement('button');
-    btn.id = 'theme-toggle';
-    btn.innerHTML = '<i data-lucide="sun" class="w-6 h-6"></i>';
-    btn.setAttribute('aria-label', 'Ganti Tema');
-    document.body.appendChild(btn);
-
-    const html = document.documentElement;
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'light') {
-        html.setAttribute('data-theme', 'light');
-        btn.innerHTML = '<i data-lucide="moon" class="w-6 h-6"></i>';
-    }
-
-    btn.onclick = () => {
-        const isLight = html.getAttribute('data-theme') === 'light';
-        const newTheme = isLight ? 'dark' : 'light';
-        
-        html.setAttribute('data-theme', isLight ? '' : 'light');
-        if (isLight) html.removeAttribute('data-theme');
-        
-        localStorage.setItem('theme', newTheme);
-        btn.innerHTML = isLight ? '<i data-lucide="sun" class="w-6 h-6"></i>' : '<i data-lucide="moon" class="w-6 h-6"></i>';
-        
-        if (typeof lucide !== 'undefined') lucide.createIcons();
-    };
-    
-    if (typeof lucide !== 'undefined') lucide.createIcons();
 }
