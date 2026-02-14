@@ -24,10 +24,10 @@
             </div>
             
             <ul class="hidden md:flex gap-8 text-xs font-semibold uppercase tracking-widest text-slate-400">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#portfolio" class="nav-link">Projects</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="#home" class="nav-link" data-i18n="nav_home">Home</a></li>
+                <li><a href="#about" class="nav-link" data-i18n="nav_about">About</a></li>
+                <li><a href="#portfolio" class="nav-link" data-i18n="nav_projects">Projects</a></li>
+                <li><a href="#contact" class="nav-link" data-i18n="nav_contact">Contact</a></li>
             </ul>
 
             <div class="md:hidden cursor-pointer p-2" id="menu-toggle">
@@ -40,30 +40,30 @@
         <button id="close-menu" class="absolute top-8 right-8 p-2 text-white hover:scale-110 transition-transform">
             <i data-lucide="x" class="w-8 h-8"></i>
         </button>
-        <a href="#home" class="mobile-link text-white">Home</a>
-        <a href="#about" class="mobile-link text-white">About</a>
-        <a href="#portfolio" class="mobile-link text-white">Projects</a>
-        <a href="#contact" class="mobile-link text-white">Contact</a>
+        <a href="#home" class="mobile-link text-white" data-i18n="nav_home">Home</a>
+        <a href="#about" class="mobile-link text-white" data-i18n="nav_about">About</a>
+        <a href="#portfolio" class="mobile-link text-white" data-i18n="nav_projects">Projects</a>
+        <a href="#contact" class="mobile-link text-white" data-i18n="nav_contact">Contact</a>
     </div>
 
     <section id="home" class="min-h-screen flex items-center justify-center pt-20 px-6 relative overflow-hidden">
         <div class="max-w-4xl text-center z-10">
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-blue-500/20 bg-blue-500/5 text-blue-400 text-[10px] font-bold tracking-[0.2em] mb-8 uppercase">
                 <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
-                Merangkai Ide, Merangkul Transformasi
+                <span data-i18n="hero_badge">Merangkai Ide, Merangkul Transformasi</span>
             </div>
             <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight leading-tight">
                 Muhammad Aklilul Hikam <br>
                 <span id="typing-text" class="text-gradient"></span>
             </h1>
-            <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed font-light">
+            <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed font-light" data-i18n="hero_desc">
                 Membantu menciptakan ekosistem digital yang efisien melalui pemanfaatan teknologi.
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#portfolio" class="btn-primary group">
-                    Lihat Proyek <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                <a href="#portfolio" class="btn-primary group" >
+                    <span data-i18n="btn_projects">Lihat Proyek</span> <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
                 </a>
-                <a href="#contact" class="btn-secondary">Hubungi Saya</a>
+                <a href="#contact" class="btn-secondary" data-i18n="btn_contact">Hubungi Saya</a>
             </div>
         </div>
     </section>
@@ -79,31 +79,31 @@
                 </div>
 
                 <div class="fade-up">
-                    <h2 class="section-heading mb-8">About Me</h2>
+                    <h2 class="section-heading mb-8" data-i18n="about_title">About Me</h2>
                     <div class="space-y-6 text-slate-400 leading-relaxed text-lg font-light">
-                        <p>
-                           Halo! Saya adalah mahasiswa <strong>Sistem Informasi Bisnis</strong> di Politeknik Negeri Malang. Saya adalah seorang individu yang selalu penasaran dengan dunia teknologi dan strategi bisnis modern. Saya juga suka menulis, terutama tentang sesuatu yang saya minati. 
+                        <p data-i18n="about_p1">
+                           Halo! Saya adalah mahasiswa <strong>Sistem Informasi Bisnis</strong> di Politeknik Negeri Malang. Saya adalah seorang individu yang selalu penasaran dengan dunia teknologi dan strategi bisnis modern. Saya juga suka menulis, terutama tentang sesuatu yang menurut saya menarik.
                         </p>
-                        <p>
+                        <p data-i18n="about_p2">
                             Perjalanan saya di dunia digital dimulai dari ketertarikan pada pengembangan web, yang kemudian berkembang pesat saat saya mengenal ekosistem Web3 dan Cryptocurrency. Berawal dari eksplorasi di dunia airdrop, saya justru menemukan minat yang mendalam pada teknologi blockchain dan bagaimana desentralisasi dapat mengubah masa depan ekonomi digital.
                         </p>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-12">
                         <div class="info-card">
-                            <span class="info-label">Nama Lengkap</span>
+                            <span class="info-label" data-i18n="info_name">Nama Lengkap</span>
                             <span class="info-value">Muhammad Aklilul Hikam</span>
                         </div>
                         <div class="info-card">
-                            <span class="info-label">Usia</span>
+                            <span class="info-label" data-i18n="info_age">Usia</span>
                             <span class="info-value">20 Tahun</span>
                         </div>
                         <div class="info-card">
-                            <span class="info-label">Lokasi</span>
+                            <span class="info-label" data-i18n="info_loc">Lokasi</span>
                             <span class="info-value">Malang, Indonesia</span>
                         </div>
                         <div class="info-card">
-                            <span class="info-label">Email</span>
+                            <span class="info-label" data-i18n="info_email">Email</span>
                             <span class="info-value">aklilhikam6@gmail.com</span>
                         </div>
                     </div>
@@ -112,12 +112,12 @@
         </div>
         <section id="skills" class="py-24 px-6 relative">
     <div class="max-w-3xl mx-auto">
-        <h2 class="text-3xl font-bold text-center text-white mb-12">Abilities</h2>
+        <h2 class="text-3xl font-bold text-center text-white mb-12" data-i18n="abilities_title">Abilities</h2>
         
         <div class="space-y-8">
             <div class="space-y-2">
                 <div class="flex justify-between items-center text-sm font-medium">
-                    <span class="text-slate-200">Tidur</span>
+                    <span class="text-slate-200" data-i18n="ability_sleep">Tidur</span>
                     <span class="text-orange-400">100%</span>
                 </div>
                 <div class="h-3 w-full bg-white/5 rounded-full overflow-hidden border border-white/5">
@@ -127,7 +127,7 @@
 
             <div class="space-y-2">
                 <div class="flex justify-between items-center text-sm font-medium">
-                    <span class="text-slate-200">Belajar Hal Baru</span>
+                    <span class="text-slate-200" data-i18n="ability_learn">Belajar Hal Baru</span>
                     <span class="text-orange-400">99%</span>
                 </div>
                 <div class="h-3 w-full bg-white/5 rounded-full overflow-hidden border border-white/5">
@@ -137,7 +137,7 @@
 
             <div class="space-y-2">
                 <div class="flex justify-between items-center text-sm font-medium">
-                    <span class="text-slate-200">Mewujudkan Ide</span>
+                    <span class="text-slate-200" data-i18n="ability_idea">Mewujudkan Ide</span>
                     <span class="text-orange-400">90%</span>
                 </div>
                 <div class="h-3 w-full bg-white/5 rounded-full overflow-hidden border border-white/5">
@@ -147,7 +147,7 @@
 
             <div class="space-y-2">
                 <div class="flex justify-between items-center text-sm font-medium">
-                    <span class="text-slate-200">Ngopi</span>
+                    <span class="text-slate-200" data-i18n="ability_coffee">Ngopi</span>
                     <span class="text-orange-400">88%</span>
                 </div>
                 <div class="h-3 w-full bg-white/5 rounded-full overflow-hidden border border-white/5">
@@ -157,7 +157,7 @@
 
             <div class="space-y-2">
                 <div class="flex justify-between items-center text-sm font-medium">
-                    <span class="text-slate-200">Nulis</span>
+                    <span class="text-slate-200" data-i18n="ability_write">Nulis</span>
                     <span class="text-orange-400">70%</span>
                 </div>
                 <div class="h-3 w-full bg-white/5 rounded-full overflow-hidden border border-white/5">
@@ -172,8 +172,8 @@
     <section id="portfolio" class="py-24 px-6 bg-white/[0.01]">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
-                <h2 class="section-heading mb-4">Projects</h2>
-                <p class="text-slate-500 uppercase tracking-widest text-xs font-semibold">Arsip kontribusi dan eksperimen</p>
+                <h2 class="section-heading mb-4" data-i18n="projects_title">Projects</h2>
+                <p class="text-slate-500 uppercase tracking-widest text-xs font-semibold" data-i18n="projects_subtitle">Arsip kontribusi dan eksperimen</p>
             </div>
             
             <div id="portfolio-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -187,8 +187,8 @@
             
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 relative z-10">
                 <div>
-                    <h2 class="text-4xl font-bold text-white mb-6">Mari Berkolaborasi</h2>
-                    <p class="text-slate-400 mb-10 leading-relaxed text-lg font-light">
+                    <h2 class="text-4xl font-bold text-white mb-6" data-i18n="contact_title">Mari Berkolaborasi</h2>
+                    <p class="text-slate-400 mb-10 leading-relaxed text-lg font-light" data-i18n="contact_desc">
                         Terbuka untuk diskusi mengenai pengembangan Web3, riset Blockchain, atau peluang kolaborasi teknis lainnya.
                     </p>
                     
@@ -216,18 +216,18 @@
 
                 <form id="contact-form" class="space-y-4">
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <input type="text" id="name" placeholder="Nama" class="form-input" required>
-                        <input type="email" id="email" placeholder="Email" class="form-input" required>
+                        <input type="text" id="name" placeholder="Nama" class="form-input" required data-i18n-ph="form_name">
+                        <input type="email" id="email" placeholder="Email" class="form-input" required data-i18n-ph="form_email">
                     </div>
-                    <textarea id="message" rows="5" placeholder="Pesan Anda..." class="form-input resize-none" required></textarea>
-                    <button type="submit" id="submit-btn" class="btn-primary w-full justify-center py-4 text-sm tracking-widest uppercase font-bold">Kirim Pesan</button>
+                    <textarea id="message" rows="5" placeholder="Pesan Anda..." class="form-input resize-none" required data-i18n-ph="form_msg"></textarea>
+                    <button type="submit" id="submit-btn" class="btn-primary w-full justify-center py-4 text-sm tracking-widest uppercase font-bold" data-i18n="form_btn">Kirim Pesan</button>
                 </form>
             </div>
         </div>
     </section>
 
     <footer class="py-12 border-t border-white/5 text-center px-6">
-        <p class="text-slate-500 text-sm tracking-widest uppercase font-medium">
+        <p class="text-slate-500 text-sm tracking-widest uppercase font-medium" data-i18n="footer">
             &copy; 2026 Muhammad Aklilul Hikam. All rights reserved.
         </p>
     </footer>

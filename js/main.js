@@ -27,23 +27,118 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollObserver();
 });
 
+let currentLang = localStorage.getItem('lang') || 'id';
+let typingInterval;
+
+function initLanguage() {
+    const btn = document.createElement('button');
+    btn.id = 'lang-toggle';
+    btn.className = 'fixed bottom-6 right-6 z-50 bg-blue-600/20 hover:bg-blue-600 text-blue-400 hover:text-white border border-blue-500/50 px-4 py-2 rounded-full backdrop-blur-md transition-all duration-300 font-bold text-xs tracking-widest';
+    btn.textContent = currentLang === 'id' ? 'EN' : 'ID';
+    document.body.appendChild(btn);
+
+    const updateContent = () => {
+        const t = translations[currentLang];
+        
+        // Update static elements
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (t[key]) el.innerHTML = t[key];
+        });
+
+        // Update placeholders
+        document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+            const key = el.getAttribute('data-i18n-ph');
+            if (t[key]) el.placeholder = t[key];
+        });
+
+        // Re-render dynamic components
+        renderPortfolio();
+        initTypingEffect();
+        
+        // Update Article Title specifically
+        const articleTitle = document.querySelector('#metrics-grid')?.previousElementSibling;
+        if(articleTitle) articleTitle.innerHTML = t.article_title;
+
+        btn.textContent = currentLang === 'id' ? 'EN' : 'ID';
+    };
+
+    btn.onclick = () => {
+        currentLang = currentLang === 'id' ? 'en' : 'id';
+        localStorage.setItem('lang', currentLang);
+        updateContent();
+    };
+
+    // Initial load
+    updateContent();
+}
+
 function initCursorFollower() {
-    const follower = document.createElement('div');
-    follower.className = 'cursor-follower';
-    document.body.appendChild(follower);
+    const canvas = document.createElement('canvas');
+    canvas.style.position = 'fixed';
+    canvas.style.top = '0';
+    canvas.style.left = '0';
+    canvas.style.width = '100%';
+    canvas.style.height = '100%';
+    canvas.style.pointerEvents = 'none';
+    canvas.style.zIndex = '9999';
+    document.body.appendChild(canvas);
+
+    const ctx = canvas.getContext('2d');
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+    
+    let points = [];
+    
+    window.addEventListener('resize', () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+    });
 
     document.addEventListener('mousemove', (e) => {
-        follower.style.left = e.clientX + 'px';
-        follower.style.top = e.clientY + 'px';
-        follower.style.opacity = '1';
+        points.push({ x: e.clientX, y: e.clientY, age: 0 });
     });
+
+    function animate() {
+        ctx.clearRect(0, 0, width, height);
+        ctx.lineJoin = 'round';
+        ctx.lineCap = 'round';
+
+        if (points.length > 1) {
+            ctx.beginPath();
+            ctx.moveTo(points[0].x, points[0].y);
+            
+            for (let i = 1; i < points.length; i++) {
+                const p = points[i];
+                // Lightning jitter effect
+                const jitter = (Math.random() - 0.5) * 10; 
+                ctx.lineTo(p.x + jitter, p.y + jitter);
+                p.age++;
+            }
+
+            ctx.shadowBlur = 15;
+            ctx.shadowColor = '#00f2ff';
+            ctx.strokeStyle = '#fff';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            ctx.shadowBlur = 0;
+        }
+
+        // Remove old points
+        points = points.filter(p => p.age < 10);
+        requestAnimationFrame(animate);
+    }
+    animate();
 }
 
 function initTypingEffect() {
     const target = document.getElementById('typing-text');
     if (!target) return;
+    
+    // Clear existing interval if any (for language switch)
+    if (window.typingTimeout) clearTimeout(window.typingTimeout);
 
-    const roles = ["Blockchain Enthusiast", "Student", "Tech Explorer"];
+    const roles = translations[currentLang].roles;
     let roleIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
@@ -72,7 +167,7 @@ function initTypingEffect() {
             typeSpeed = 500; 
         }
 
-        setTimeout(type, typeSpeed);
+        window.typingTimeout = setTimeout(type, typeSpeed);
     }
     type();
 }
@@ -81,16 +176,18 @@ function renderPortfolio() {
     const grid = document.getElementById('portfolio-grid');
     if (!grid || typeof portfolioData === 'undefined') return;
 
+    const t = translations[currentLang];
+
     grid.innerHTML = portfolioData.map((item, index) => `
         <div class="portfolio-card fade-up group hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300" style="transition-delay: ${index * 150}ms">
             <div class="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center text-blue-400 mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
                 <i data-lucide="${item.icon}" class="w-6 h-6"></i>
             </div>
-            <span class="text-[10px] font-bold tracking-widest text-slate-500 uppercase mb-2 block">${item.category}</span>
+            <span class="text-[10px] font-bold tracking-widest text-slate-500 uppercase mb-2 block">${currentLang === 'id' ? item.category : (item.category_en || item.category)}</span>
             <h3 class="text-xl font-bold text-white mb-4 transition-colors">${item.title}</h3>
-            <p class="text-slate-400 text-sm mb-8 flex-grow leading-relaxed font-light">${item.description}</p>
+            <p class="text-slate-400 text-sm mb-8 flex-grow leading-relaxed font-light">${currentLang === 'id' ? item.description : (item.description_en || item.description)}</p>
             <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-xs font-bold text-white hover:gap-3 transition-all duration-300">
-                BUKA PROYEK <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                ${t.open_project} <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
             </a>
         </div>
     `).join('');
@@ -101,13 +198,21 @@ function initArticleMetrics() {
     const portfolioGrid = document.getElementById('portfolio-grid');
     if (!portfolioGrid || typeof metricsData === 'undefined') return;
 
-    const section = document.createElement('section');
-    section.className = portfolioGrid.parentElement.className;
-    section.innerHTML = `
-        <h2 class="section-heading text-center mt-12 mb-12 fade-up">My <span class="text-gradient">Article</span></h2>
-        <div id="metrics-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
-    `;
-    portfolioGrid.parentElement.after(section);
+    // Check if section already exists to avoid duplication on re-render
+    let section = document.getElementById('articles-section');
+    if (!section) {
+        section = document.createElement('section');
+        section.id = 'articles-section';
+        section.className = portfolioGrid.parentElement.className;
+        section.innerHTML = `
+            <h2 class="section-heading text-center mt-12 mb-12 fade-up"></h2>
+            <div id="metrics-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+        `;
+        portfolioGrid.parentElement.after(section);
+    }
+    
+    // Title is updated in initLanguage
+
     const grid = document.getElementById('metrics-grid');
     const formatNum = (n) => new Intl.NumberFormat('en-US', { notation: "compact", maximumFractionDigits: 1 }).format(n);
     grid.innerHTML = metricsData.map((item, i) => `
@@ -180,30 +285,33 @@ function initParticles() {
     window.addEventListener('resize', resize);
     resize();
 
-    for(let i=0; i<50; i++) {
+    // Rain drops
+    for(let i=0; i<100; i++) {
         particles.push({
             x: Math.random() * canvas.width,
             y: Math.random() * canvas.height,
-            r: Math.random() * 2 + 1,
-            v: Math.random() * 2 + 1
+            l: Math.random() * 20 + 10, // length
+            v: Math.random() * 10 + 10  // velocity
         });
     }
 
     function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.6)'; 
+        ctx.strokeStyle = 'rgba(174, 216, 255, 0.2)'; 
+        ctx.lineWidth = 1;
+        ctx.beginPath();
         
         particles.forEach(p => {
             p.y += p.v;
             if(p.y > canvas.height) {
-                p.y = 0;
+                p.y = -p.l;
                 p.x = Math.random() * canvas.width;
             }
             
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-            ctx.fill();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(p.x, p.y + p.l);
         });
+        ctx.stroke();
         requestAnimationFrame(animate);
     }
     animate();
