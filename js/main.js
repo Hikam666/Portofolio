@@ -37,23 +37,19 @@ function initLanguage() {
     const updateContent = () => {
         const t = translations[currentLang];
         
-        // Update static elements
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');
             if (t[key]) el.innerHTML = t[key];
         });
 
-        // Update placeholders
         document.querySelectorAll('[data-i18n-ph]').forEach(el => {
             const key = el.getAttribute('data-i18n-ph');
             if (t[key]) el.placeholder = t[key];
         });
 
-        // Re-render dynamic components
         renderPortfolio();
         initTypingEffect();
         
-        // Update Article Title specifically
         const articleTitle = document.querySelector('#metrics-grid')?.previousElementSibling;
         if(articleTitle) articleTitle.innerHTML = t.article_title;
 
@@ -70,7 +66,6 @@ function initLanguage() {
     if(btnDesktop) btnDesktop.onclick = toggle;
     if(btnMobile) btnMobile.onclick = toggle;
 
-    // Initial load
     updateContent();
 }
 
@@ -113,7 +108,6 @@ function initCursorFollower() {
             
             for (let i = 1; i < points.length; i++) {
                 const p = points[i];
-                // Lightning jitter effect
                 const jitter = (Math.random() - 0.5) * 10; 
                 ctx.lineTo(p.x + jitter, p.y + jitter);
                 p.age++;
@@ -127,7 +121,6 @@ function initCursorFollower() {
             ctx.shadowBlur = 0;
         }
 
-        // Remove old points
         points = points.filter(p => p.age < 10);
         requestAnimationFrame(animate);
     }
@@ -138,7 +131,6 @@ function initTypingEffect() {
     const target = document.getElementById('typing-text');
     if (!target) return;
     
-    // Clear existing interval if any (for language switch)
     if (window.typingTimeout) clearTimeout(window.typingTimeout);
 
     const roles = translations[currentLang].roles;
@@ -198,24 +190,23 @@ function renderPortfolio() {
     if (typeof lucide !== 'undefined') lucide.createIcons();
 }
 function initArticleMetrics() {
-    const portfolioGrid = document.getElementById('portfolio-grid');
-    if (!portfolioGrid || typeof metricsData === 'undefined') return;
+    const portfolioSection = document.getElementById('portfolio');
+    if (!portfolioSection || typeof metricsData === 'undefined') return;
 
-    // Check if section already exists to avoid duplication on re-render
     let section = document.getElementById('articles-section');
     if (!section) {
         section = document.createElement('section');
         section.id = 'articles-section';
-        section.className = portfolioGrid.parentElement.className;
+        section.className = portfolioSection.className;
         section.innerHTML = `
-            <h2 class="section-heading text-center mt-12 mb-12 fade-up"></h2>
-            <div id="metrics-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+            <div class="max-w-7xl mx-auto">
+                <h2 class="section-heading text-center mb-12 fade-up"></h2>
+                <div id="metrics-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+            </div>
         `;
-        portfolioGrid.parentElement.after(section);
+        portfolioSection.after(section);
     }
     
-    // Title is updated in initLanguage
-
     const grid = document.getElementById('metrics-grid');
     const formatNum = (n) => new Intl.NumberFormat('en-US', { notation: "compact", maximumFractionDigits: 1 }).format(n);
     grid.innerHTML = metricsData.map((item, i) => `
@@ -262,7 +253,7 @@ function initSkillBars() {
         if (!bar.getAttribute('data-width')) {
             bar.setAttribute('data-width', bar.style.width);
         }
-        bar.style.width = '0%'; 
+        bar.style.width = '0%';
         observer.observe(bar);
     });
 }
@@ -274,7 +265,7 @@ function initParticles() {
     canvas.style.left = '0';
     canvas.style.width = '100%';
     canvas.style.height = '100%';
-    canvas.style.zIndex = '0'; 
+    canvas.style.zIndex = '0';
     canvas.style.pointerEvents = 'none';
     document.body.prepend(canvas);
 
@@ -288,19 +279,18 @@ function initParticles() {
     window.addEventListener('resize', resize);
     resize();
 
-    // Rain drops
     for(let i=0; i<100; i++) {
         particles.push({
             x: Math.random() * canvas.width,
             y: Math.random() * canvas.height,
-            l: Math.random() * 20 + 10, // length
-            v: Math.random() * 10 + 10  // velocity
+            l: Math.random() * 20 + 10,
+            v: Math.random() * 10 + 10
         });
     }
 
     function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.strokeStyle = 'rgba(174, 216, 255, 0.2)'; 
+        ctx.strokeStyle = 'rgba(174, 216, 255, 0.2)';
         ctx.lineWidth = 1;
         ctx.beginPath();
         
