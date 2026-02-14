@@ -4,12 +4,11 @@ document.addEventListener('DOMContentLoaded', () => {
     initSkillBars();
     initArticleMetrics();
     initCursorFollower();
+    initLanguage();
     if (typeof lucide !== 'undefined') {
         lucide.createIcons();
     }
 
-    renderPortfolio();
-    initTypingEffect();
     const menuToggle = document.getElementById('menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
     const closeMenu = document.getElementById('close-menu');
@@ -50,8 +49,10 @@ function initLanguage() {
         renderPortfolio();
         initTypingEffect();
         
-        const articleTitle = document.querySelector('#metrics-grid')?.previousElementSibling;
+        const articleTitle = document.getElementById('article-title');
+        const articleSubtitle = document.getElementById('article-subtitle');
         if(articleTitle) articleTitle.innerHTML = t.article_title;
+        if(articleSubtitle) articleSubtitle.textContent = t.article_subtitle;
 
         const label = currentLang === 'id' ? 'EN' : 'ID';
         if(btnDesktop) btnDesktop.textContent = label;
@@ -200,7 +201,10 @@ function initArticleMetrics() {
         section.className = portfolioSection.className;
         section.innerHTML = `
             <div class="max-w-7xl mx-auto">
-                <h2 class="section-heading text-center mb-12 fade-up"></h2>
+                <div class="text-center mb-16 fade-up">
+                    <h2 id="article-title" class="section-heading mb-4"></h2>
+                    <p id="article-subtitle" class="text-slate-500 uppercase tracking-widest text-xs font-semibold"></p>
+                </div>
                 <div id="metrics-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
             </div>
         `;
