@@ -55,8 +55,12 @@ function initLanguage() {
         if(articleSubtitle) articleSubtitle.textContent = t.article_subtitle;
 
         const label = currentLang === 'id' ? 'EN' : 'ID';
-        if(btnDesktop) btnDesktop.textContent = label;
-        if(btnMobile) btnMobile.textContent = label;
+        const btnContent = `<i data-lucide="languages" class="w-3.5 h-3.5"></i><span>${label}</span>`;
+        
+        if(btnDesktop) btnDesktop.innerHTML = btnContent;
+        if(btnMobile) btnMobile.innerHTML = btnContent;
+        
+        if (typeof lucide !== 'undefined') lucide.createIcons();
     };
 
     const toggle = () => {
@@ -189,6 +193,16 @@ function renderPortfolio() {
     `).join('');
     
     if (typeof lucide !== 'undefined') lucide.createIcons();
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+
+    grid.querySelectorAll('.portfolio-card').forEach(el => observer.observe(el));
 }
 function initArticleMetrics() {
     const portfolioSection = document.getElementById('portfolio');
