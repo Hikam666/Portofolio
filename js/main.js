@@ -31,11 +31,8 @@ let currentLang = localStorage.getItem('lang') || 'id';
 let typingInterval;
 
 function initLanguage() {
-    const btn = document.createElement('button');
-    btn.id = 'lang-toggle';
-    btn.className = 'fixed bottom-6 right-6 z-50 bg-blue-600/20 hover:bg-blue-600 text-blue-400 hover:text-white border border-blue-500/50 px-4 py-2 rounded-full backdrop-blur-md transition-all duration-300 font-bold text-xs tracking-widest';
-    btn.textContent = currentLang === 'id' ? 'EN' : 'ID';
-    document.body.appendChild(btn);
+    const btnDesktop = document.getElementById('lang-toggle-desktop');
+    const btnMobile = document.getElementById('lang-toggle-mobile');
 
     const updateContent = () => {
         const t = translations[currentLang];
@@ -60,14 +57,18 @@ function initLanguage() {
         const articleTitle = document.querySelector('#metrics-grid')?.previousElementSibling;
         if(articleTitle) articleTitle.innerHTML = t.article_title;
 
-        btn.textContent = currentLang === 'id' ? 'EN' : 'ID';
+        const label = currentLang === 'id' ? 'EN' : 'ID';
+        if(btnDesktop) btnDesktop.textContent = label;
+        if(btnMobile) btnMobile.textContent = label;
     };
 
-    btn.onclick = () => {
+    const toggle = () => {
         currentLang = currentLang === 'id' ? 'en' : 'id';
         localStorage.setItem('lang', currentLang);
         updateContent();
     };
+    if(btnDesktop) btnDesktop.onclick = toggle;
+    if(btnMobile) btnMobile.onclick = toggle;
 
     // Initial load
     updateContent();
@@ -81,7 +82,9 @@ function initCursorFollower() {
     canvas.style.width = '100%';
     canvas.style.height = '100%';
     canvas.style.pointerEvents = 'none';
-    canvas.style.zIndex = '9999';
+    canvas.style.zIndex = '40';
+    canvas.style.opacity = '0.5';
+    canvas.style.mixBlendMode = 'screen';
     document.body.appendChild(canvas);
 
     const ctx = canvas.getContext('2d');
@@ -119,7 +122,7 @@ function initCursorFollower() {
             ctx.shadowBlur = 15;
             ctx.shadowColor = '#00f2ff';
             ctx.strokeStyle = '#fff';
-            ctx.lineWidth = 2;
+            ctx.lineWidth = 1;
             ctx.stroke();
             ctx.shadowBlur = 0;
         }
