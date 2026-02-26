@@ -128,7 +128,7 @@ const metricsData = [
   {
     id: 101,
     title: "Memahami Scarcity: Mengapa Rencana Thanos Justru Menghancurkan Ekonomi",
-    views: 3700,
+    views: 4900,
     likes: 30,
     shares: 15,
     type: 'article',
@@ -178,5 +178,33 @@ const metricsData = [
     shares: 3,
     type: 'article',
     link: "https://x.com/0xRahvanaa/status/2021225113644130507?s=20"
-  }
+  },
+  {
+    id: 107,
+    title: "Mikroekonomi: Versi Close-Up dari Dunia Ekonomi",
+    views: 300,
+    likes: 8,
+    shares: 5,
+    type: 'article',
+    link: "https://x.com/0xRahvanaa/status/2023610841883701654?s=20"
+  },
+  {
+    id: 108,
+    title: "Belajar Opportunity Cost dari Tony Stark: Mengapa Iron Man Menutup Pabrik Senjatanya?",
+    views: 600,
+    likes: 0,
+    shares: 0,
+    type: 'article',
+    link: "https://x.com/0xRahvanaa/status/2024149421215424674?s=20"
+  },
+  {
+    id: 109,
+    title: "Bank Run: Ketika Semua Orang Pengen \"Putus\" Sama Bank",
+    views: 800,
+    likes: 0,
+    shares: 0,
+    type: 'article',
+    link: "https://x.com/0xRahvanaa/status/2025571775556591784?s=20"
+  },
+  
 ];
