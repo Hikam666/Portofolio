@@ -66,8 +66,14 @@ function initLanguage() {
         localStorage.setItem('lang', currentLang);
         updateContent();
     };
-    if(btnDesktop) btnDesktop.onclick = toggle;
-    if(btnMobile) btnMobile.onclick = toggle;
+    if(btnDesktop) {
+        btnDesktop.onclick = toggle;
+        btnDesktop.classList.add('flex', 'items-center', 'gap-2');
+    }
+    if(btnMobile) {
+        btnMobile.onclick = toggle;
+        btnMobile.classList.add('flex', 'items-center', 'gap-2');
+    }
 
     updateContent();
 }
