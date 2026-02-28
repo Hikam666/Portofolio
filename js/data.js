@@ -15,10 +15,10 @@ const translations = {
         info_age: "Usia",
         info_loc: "Lokasi",
         abilities_title: "Kemampuan",
-        ability_sleep: "Tidur",
+        ability_sleep: "Adaptabilitas",
         ability_learn: "Belajar Hal Baru",
         ability_idea: "Mewujudkan Ide",
-        ability_coffee: "Ngopi",
+        ability_coffee: "Manajemen Waktu",
         ability_write: "Nulis",
         projects_title: "Proyek",
         projects_subtitle: "Arsip kontribusi dan eksperimen",
@@ -50,10 +50,10 @@ const translations = {
         info_age: "Age",
         info_loc: "Location",
         abilities_title: "Abilities",
-        ability_sleep: "Sleeping",
+        ability_sleep: "Adaptability",
         ability_learn: "Learning New Things",
         ability_idea: "Realizing Ideas",
-        ability_coffee: "Drinking Coffee",
+        ability_coffee: "Time Management",
         ability_write: "Writing",
         projects_title: "Projects",
         projects_subtitle: "Archive of contributions and experiments",
@@ -135,24 +135,6 @@ const metricsData = [
     link: "https://x.com/0xRahvanaa/status/2015782815124819979?s=20"
   },
   {
-    id: 102,
-    title: "Suku Bajo: Penyelam Terkuat, Sang Penjelajah Samudra",
-    views: 660,
-    likes: 0,
-    shares: 0,
-    type: 'article',
-    link: "https://www.kompasiana.com/hiiikam/647700a408a8b50524357193/suku-bajo-penyelam-terkuat-sang-penjelajah-samudra"
-  },
-  {
-    id: 103,
-    title: "Kemunculan Oarfish dan Mitos Bencana",
-    views: 1491,
-    likes: 0,
-    shares: 0,
-    type: 'article',
-    link: "https://www.kompasiana.com/hiiikam/6419aaf44addee21a761e183/kemunculan-oarfish-dan-mitos-bencana"
-  },
-  {
     id: 104,
     title: "Memahami Ekonomi lewat The Last of Us",
     views: 119,
@@ -171,15 +153,6 @@ const metricsData = [
     link: "https://x.com/0xRahvanaa/status/2020466307813036159?s=20"
   },
   {
-    id: 106,
-    title: "Memahami Blockchain: Menjawab Kebingungan saya dulu.",
-    views: 450,
-    likes: 5,
-    shares: 3,
-    type: 'article',
-    link: "https://x.com/0xRahvanaa/status/2021225113644130507?s=20"
-  },
-  {
     id: 107,
     title: "Mikroekonomi: Versi Close-Up dari Dunia Ekonomi",
     views: 300,
@@ -187,15 +160,6 @@ const metricsData = [
     shares: 5,
     type: 'article',
     link: "https://x.com/0xRahvanaa/status/2023610841883701654?s=20"
-  },
-  {
-    id: 108,
-    title: "Belajar Opportunity Cost dari Tony Stark: Mengapa Iron Man Menutup Pabrik Senjatanya?",
-    views: 600,
-    likes: 0,
-    shares: 0,
-    type: 'article',
-    link: "https://x.com/0xRahvanaa/status/2024149421215424674?s=20"
   },
   {
     id: 109,

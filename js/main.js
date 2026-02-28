@@ -1,9 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-    initLoader();
     initParticles();
     initSkillBars();
     initArticleMetrics();
-    initCursorFollower();
     initLanguage();
     if (typeof lucide !== 'undefined') {
         lucide.createIcons();
@@ -72,64 +70,6 @@ function initLanguage() {
     if(btnMobile) btnMobile.onclick = toggle;
 
     updateContent();
-}
-
-function initCursorFollower() {
-    const canvas = document.createElement('canvas');
-    canvas.style.position = 'fixed';
-    canvas.style.top = '0';
-    canvas.style.left = '0';
-    canvas.style.width = '100%';
-    canvas.style.height = '100%';
-    canvas.style.pointerEvents = 'none';
-    canvas.style.zIndex = '40';
-    canvas.style.opacity = '0.5';
-    canvas.style.mixBlendMode = 'screen';
-    document.body.appendChild(canvas);
-
-    const ctx = canvas.getContext('2d');
-    let width = canvas.width = window.innerWidth;
-    let height = canvas.height = window.innerHeight;
-    
-    let points = [];
-    
-    window.addEventListener('resize', () => {
-        width = canvas.width = window.innerWidth;
-        height = canvas.height = window.innerHeight;
-    });
-
-    document.addEventListener('mousemove', (e) => {
-        points.push({ x: e.clientX, y: e.clientY, age: 0 });
-    });
-
-    function animate() {
-        ctx.clearRect(0, 0, width, height);
-        ctx.lineJoin = 'round';
-        ctx.lineCap = 'round';
-
-        if (points.length > 1) {
-            ctx.beginPath();
-            ctx.moveTo(points[0].x, points[0].y);
-            
-            for (let i = 1; i < points.length; i++) {
-                const p = points[i];
-                const jitter = (Math.random() - 0.5) * 10; 
-                ctx.lineTo(p.x + jitter, p.y + jitter);
-                p.age++;
-            }
-
-            ctx.shadowBlur = 15;
-            ctx.shadowColor = '#00f2ff';
-            ctx.strokeStyle = '#fff';
-            ctx.lineWidth = 1;
-            ctx.stroke();
-            ctx.shadowBlur = 0;
-        }
-
-        points = points.filter(p => p.age < 10);
-        requestAnimationFrame(animate);
-    }
-    animate();
 }
 
 function initTypingEffect() {
@@ -387,31 +327,5 @@ function initScrollObserver() {
     document.querySelectorAll('.fade-up, section, .info-card, .portfolio-card').forEach(el => {
         el.classList.add('fade-up');
         observer.observe(el);
-    });
-}
-
-function initLoader() {
-    const script = document.createElement('script');
-    script.src = "https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js";
-    document.head.appendChild(script);
-    const loader = document.createElement('div');
-    loader.id = 'loader-container';
-    loader.innerHTML = `
-        <lottie-player 
-            src="https://assets3.lottiefiles.com/packages/lf20_w51pcehl.json" 
-            background="transparent" 
-            speed="1" 
-            style="width: 300px; height: 300px;" 
-            loop 
-            autoplay>
-        </lottie-player>
-    `;
-    document.body.prepend(loader);
-    window.addEventListener('load', () => {
-        setTimeout(() => {
-            loader.style.opacity = '0';
-            loader.style.visibility = 'hidden';
-            setTimeout(() => loader.remove(), 500);
-        }, 2000); 
     });
 }
