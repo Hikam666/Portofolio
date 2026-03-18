@@ -206,5 +206,31 @@ const metricsData = [
     type: 'article',
     link: "https://x.com/0xRahvanaa/status/2025571775556591784?s=20"
   },
-  
+  {
+    id: 110,
+    title: "Memahami cara pak Habibie menjinakan rupiah", 
+    views: 1200,
+    likes: 15,
+    shares: 8,
+    type: 'article',
+    link: "https://x.com/0xRahvanaa/status/2028097383762919794?s=20"
+  },
+  {
+    id: 111,
+    title: "Memahami Civil War: Ketika Pahlawan Berbentaran Karna Prinsip",
+    views: 900,
+    likes: 0,
+    shares: 0,
+    type: 'article',
+    link: "https://x.com/0xRahvanaa/status/2030157296911708322?s=20"
+  },
+  {
+    id: 112,
+    title: "Memahami Bisnis Money Laundering Walter White dari Series Breaking Bad",
+    views: 2000,
+    likes: 0,
+    shares: 0,  
+    type: 'article',
+    link: "https://x.com/0xRahvanaa/status/2032810272940040560?s=20"
+  }
 ];
