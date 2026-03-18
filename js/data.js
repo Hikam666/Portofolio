@@ -32,7 +32,7 @@ const translations = {
         open_project: "BUKA PROYEK",
         article_title: "Artikel <span class=\"text-gradient\">Saya</span>",
         article_subtitle: "Kumpulan tulisan dan opini",
-        roles: ["Blockchain Enthusiast", "Mahasiswa", "Penjelajah Teknologi"]
+        roles: ["Web3 Enthusiast", "Mahasiswa", "Penjelajah Teknologi"]
     },
     en: {
         nav_home: "Home",
@@ -67,7 +67,7 @@ const translations = {
         open_project: "OPEN PROJECT",
         article_title: "My <span class=\"text-gradient\">Articles</span>",
         article_subtitle: "Collection of writings and opinions",
-        roles: ["Blockchain Enthusiast", "Student", "Tech Explorer"]
+        roles: ["Web3 Enthusiast", "Student", "Tech Explorer"]
     }
 };
 
