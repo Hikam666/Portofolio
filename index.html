@@ -3,235 +3,251 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhammad Aklilul Hikam</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <title>Muhammad Aklilul Hikam — Web3 & Digital Builder</title>
+    <meta name="description" content="Portfolio of Muhammad Aklilul Hikam — Web3 Enthusiast, Business Information Systems student, and Digital Builder from Malang, Indonesia.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
     <link rel="stylesheet" href="css/style.css">
-    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body class="bg-[#030712] text-slate-200 selection:bg-blue-500/30">
+<body>
 
-    <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
-        <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-500/10 blur-[120px] rounded-full"></div>
-        <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-indigo-500/10 blur-[120px] rounded-full"></div>
-        <div class="grid-overlay"></div>
+    <div id="loader">
+        <div class="loader-content">
+            <div class="loader-name">
+                <span class="ln-a">Wel</span><span class="ln-b">come</span>
+            </div>
+            <div class="loader-bar-track">
+                <div class="loader-bar-fill" id="loader-fill"></div>
+            </div>
+            <div class="loader-num"><span id="loader-pct">0</span><span>%</span></div>
+        </div>
     </div>
 
-    <nav class="fixed top-0 w-full z-50 glass-nav border-b border-white/5">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
-            <div class="text-xl font-bold tracking-tighter text-white uppercase">
-                <span class="text-blue-400">Muhammad Aklilul Hikam</span>
-            </div>
-            
-            <ul class="hidden md:flex gap-8 text-xs font-semibold uppercase tracking-widest text-slate-400">
-                <li><a href="#home" class="nav-link" data-i18n="nav_home">Home</a></li>
-                <li><a href="#about" class="nav-link" data-i18n="nav_about">About</a></li>
-                <li><a href="#portfolio" class="nav-link" data-i18n="nav_projects">Projects</a></li>
-                <li><a href="#contact" class="nav-link" data-i18n="nav_contact">Contact</a></li>
-                <li><button id="lang-toggle-desktop" class="flex items-center gap-2 px-3 py-1.5 rounded-full border border-blue-500/30 bg-blue-500/10 hover:bg-blue-500/20 transition-all text-[10px] font-bold tracking-widest text-blue-400 hover:text-blue-300 group">EN</button></li>
-            </ul>
+    <div id="cursor">
+        <div class="cur-h"></div>
+        <div class="cur-v"></div>
+        <div class="cur-dot"></div>
+        <div class="cur-ring"></div>
+    </div>
 
-            <div class="md:hidden cursor-pointer p-2" id="menu-toggle">
-                <i data-lucide="menu" class="w-6 h-6 text-white"></i>
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">
+                <span class="lb">[</span><span class="ln">Hikam</span><span class="lb">]</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home"      class="nav-link" data-i18n="nav_home">Home</a></li>
+                <li><a href="#about"     class="nav-link" data-i18n="nav_about">About</a></li>
+                <li><a href="#portfolio" class="nav-link" data-i18n="nav_projects">Projects</a></li>
+                <li><a href="#articles"  class="nav-link" data-i18n="nav_articles">Articles</a></li>
+                <li><a href="#contact"   class="nav-link" data-i18n="nav_contact">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button id="lang-toggle" class="lang-btn">
+                    <i data-lucide="languages" class="icon-sm"></i>
+                    <span id="lang-label">EN</span>
+                </button>
+                <button id="menu-toggle" class="hamburger">
+                    <span></span><span></span><span></span>
+                </button>
             </div>
         </div>
     </nav>
 
-    <div id="mobile-menu" class="fixed inset-0 z-[60] bg-[#030712] flex flex-col items-center justify-center gap-8 text-xl font-bold translate-x-full transition-transform duration-500 ease-in-out">
-        <button id="close-menu" class="absolute top-8 right-8 p-2 text-white hover:scale-110 transition-transform">
-            <i data-lucide="x" class="w-8 h-8"></i>
+    <div id="mobile-menu">
+        <button id="close-menu" class="close-btn"><i data-lucide="x"></i></button>
+        <ul>
+            <li><a href="#home"      class="mob-link" data-i18n="nav_home">Home</a></li>
+            <li><a href="#about"     class="mob-link" data-i18n="nav_about">About</a></li>
+            <li><a href="#portfolio" class="mob-link" data-i18n="nav_projects">Projects</a></li>
+            <li><a href="#articles"  class="mob-link" data-i18n="nav_articles">Articles</a></li>
+            <li><a href="#contact"   class="mob-link" data-i18n="nav_contact">Contact</a></li>
+        </ul>
+        <button id="lang-toggle-mob" class="lang-btn" style="margin-top:2rem">
+            <i data-lucide="languages" class="icon-sm"></i>
+            <span id="lang-label-mob">EN</span>
         </button>
-        <a href="#home" class="mobile-link text-white" data-i18n="nav_home">Home</a>
-        <a href="#about" class="mobile-link text-white" data-i18n="nav_about">About</a>
-        <a href="#portfolio" class="mobile-link text-white" data-i18n="nav_projects">Projects</a>
-        <a href="#contact" class="mobile-link text-white" data-i18n="nav_contact">Contact</a>
-        <button id="lang-toggle-mobile" class="flex items-center gap-2 px-4 py-2 rounded-full border border-blue-500/30 bg-blue-500/10 hover:bg-blue-500/20 transition-all text-xs font-bold tracking-widest text-blue-400 hover:text-blue-300 group">EN</button>
     </div>
 
-    <section id="home" class="min-h-screen flex items-center justify-center pt-20 px-6 relative overflow-hidden">
-        <div class="max-w-4xl text-center z-10">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-blue-500/20 bg-blue-500/5 text-blue-400 text-[10px] font-bold tracking-[0.2em] mb-8 uppercase">
-                <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
-                <span data-i18n="hero_badge">Merangkai Ide, Merangkul Transformasi</span>
+    <section id="home" class="hero-section">
+        <div class="hero-bg">
+            <div class="hbg-blob hbg-1"></div>
+            <div class="hbg-blob hbg-2"></div>
+            <div class="hbg-grid"></div>
+        </div>
+        <div class="hero-container">
+            <div class="hero-content reveal-up">
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    <span data-i18n="hero_badge">Merangkai Ide, Merangkul Transformasi</span>
+                </div>
+                <h1 class="hero-title">
+                    <span class="ht-line">Muhammad</span>
+                    <span class="ht-line ht-blue">Aklilul Hikam</span>
+                </h1>
+                <div class="hero-role">
+                    <span class="role-pre" data-i18n="hero_role_prefix">Seorang</span>&nbsp;
+                    <span id="typing-text" class="role-type"></span>
+                </div>
+                <p class="hero-desc" data-i18n="hero_desc">Membantu menciptakan ekosistem digital yang efisien melalui pemanfaatan teknologi.</p>
+                <div class="hero-cta">
+                    <a href="#portfolio" class="btn-primary">
+                        <span data-i18n="btn_projects">Lihat Proyek</span>
+                        <i data-lucide="arrow-right" class="icon-sm"></i>
+                    </a>
+                    <a href="#contact" class="btn-ghost" data-i18n="btn_contact">Hubungi Saya</a>
+                </div>
             </div>
-            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight leading-tight">
-                Muhammad Aklilul Hikam <br>
-                <span id="typing-text" class="text-gradient"></span>
-            </h1>
-            <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed font-light" data-i18n="hero_desc">
-                Membantu menciptakan ekosistem digital yang efisien melalui pemanfaatan teknologi.
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#portfolio" class="btn-primary group" >
-                    <span data-i18n="btn_projects">Lihat Proyek</span> <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
-                </a>
-                <a href="#contact" class="btn-secondary" data-i18n="btn_contact">Hubungi Saya</a>
+            <div class="hero-visual reveal-right">
+                <div class="profile-frame">
+                    <div class="pf-glow"></div>
+                    <div class="pf-img-wrap">
+                        <img src="assets/images/profile.jpg" alt="Muhammad Aklilul Hikam" class="pf-img" onerror="this.style.display='none';this.parentElement.classList.add('no-img')">
+                        <div class="pf-fallback"><span>MAH</span></div>
+                    </div>
+                    <div class="pf-badge pf-tl"><i data-lucide="zap" class="icon-xs"></i> Web3</div>
+                    <div class="pf-badge pf-br"><i data-lucide="code-2" class="icon-xs"></i> Builder</div>
+                </div>
+            </div>
+        </div>
+        <div class="marquee-wrap">
+            <div class="marquee-track">
+                <span>Web3</span><span class="msep">—</span><span>Blockchain</span><span class="msep">—</span><span>DAO Governance</span><span class="msep">—</span><span>Cryptocurrency</span><span class="msep">—</span><span>Web Development</span><span class="msep">—</span><span>Digital Economy</span><span class="msep">—</span><span>Smart Contracts</span><span class="msep">—</span><span>DeFi</span><span class="msep">—</span>
+                <span>Web3</span><span class="msep">—</span><span>Blockchain</span><span class="msep">—</span><span>DAO Governance</span><span class="msep">—</span><span>Cryptocurrency</span><span class="msep">—</span><span>Web Development</span><span class="msep">—</span><span>Digital Economy</span><span class="msep">—</span><span>Smart Contracts</span><span class="msep">—</span><span>DeFi</span><span class="msep">—</span>
+            </div>
+        </div>
+        <a href="#about" class="scroll-hint">
+            <div class="sh-mouse"><div class="sh-wheel"></div></div>
+            <span>Scroll</span>
+        </a>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="section-container">
+            <div class="about-grid">
+                <div class="about-text">
+                    <div class="sec-label reveal-up" data-i18n="about_label">Tentang Saya</div>
+                    <h2 class="sec-title reveal-up" data-i18n="about_title">Dari <span class="ta">Malang</span>,<br>Untuk Dunia Digital</h2>
+                    <div class="about-body">
+                        <p class="reveal-up" data-i18n="about_p1">Saya mahasiswa <strong>Sistem Informasi Bisnis</strong> di Politeknik Negeri Malang, individu yang selalu penasaran dengan pertemuan antara teknologi dan strategi bisnis modern.</p>
+                        <p class="reveal-up" data-i18n="about_p2">Perjalanan saya dimulai dari pengembangan web, lalu berkembang ke ekosistem Web3 dan Cryptocurrency. Berawal dari eksplorasi airdrop, saya menemukan minat mendalam pada teknologi blockchain dan bagaimana desentralisasi dapat mengubah masa depan ekonomi digital.</p>
+                    </div>
+                    <div class="info-grid">
+                        <div class="info-item reveal-up">
+                            <i data-lucide="user" class="ii-icon"></i>
+                            <div><span class="ii-lbl" data-i18n="info_name">Nama Lengkap</span><span class="ii-val">Muhammad Aklilul Hikam</span></div>
+                        </div>
+                        <div class="info-item reveal-up">
+                            <i data-lucide="map-pin" class="ii-icon"></i>
+                            <div><span class="ii-lbl" data-i18n="info_loc">Lokasi</span><span class="ii-val">Malang, Indonesia</span></div>
+                        </div>
+                        <div class="info-item reveal-up">
+                            <i data-lucide="graduation-cap" class="ii-icon"></i>
+                            <div><span class="ii-lbl" data-i18n="info_study">Studi</span><span class="ii-val">Sistem Informasi Bisnis</span></div>
+                        </div>
+                        <div class="info-item reveal-up">
+                            <i data-lucide="mail" class="ii-icon"></i>
+                            <div><span class="ii-lbl" data-i18n="info_email">Email</span><span class="ii-val">aklilhikam6@gmail.com</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="abilities-panel reveal-right">
+                    <div class="ab-header">
+                        <h3 data-i18n="abilities_title">Abilities</h3>
+                    </div>
+                    <div class="ab-list">
+                        <div class="ab-item"><div class="ab-top"><span data-i18n="ability_sleep">Tidur</span><span class="ab-pct">100%</span></div><div class="ab-bg"><div class="ab-fill" style="--t:100%"></div></div></div>
+                        <div class="ab-item"><div class="ab-top"><span data-i18n="ability_learn">Belajar Hal Baru</span><span class="ab-pct">99%</span></div><div class="ab-bg"><div class="ab-fill" style="--t:99%"></div></div></div>
+                        <div class="ab-item"><div class="ab-top"><span data-i18n="ability_idea">Mewujudkan Ide</span><span class="ab-pct">90%</span></div><div class="ab-bg"><div class="ab-fill" style="--t:90%"></div></div></div>
+                        <div class="ab-item"><div class="ab-top"><span data-i18n="ability_coffee">Ngopi</span><span class="ab-pct">88%</span></div><div class="ab-bg"><div class="ab-fill" style="--t:88%"></div></div></div>
+                        <div class="ab-item"><div class="ab-top"><span data-i18n="ability_write">Nulis</span><span class="ab-pct">70%</span></div><div class="ab-bg"><div class="ab-fill" style="--t:70%"></div></div></div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="about" class="py-24 px-6 relative">
-        <div class="max-w-6xl mx-auto">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                <div class="relative group mx-auto lg:mx-0 max-w-md w-full">
-                    <div class="absolute -inset-2 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-3xl blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
-                    <div class="relative rounded-3xl overflow-hidden aspect-square glass border border-white/10 shadow-2xl profile-anim">
-                        <img src="/assets/images/profile.jpg" alt="Muhammad Aklilul Hikam" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
-                    </div>
-                </div>
-
-                <div class="fade-up">
-                    <h2 class="section-heading mb-8" data-i18n="about_title">About Me</h2>
-                    <div class="space-y-6 text-slate-400 leading-relaxed text-lg font-light">
-                        <p data-i18n="about_p1">
-                           Halo! Saya adalah mahasiswa <strong>Sistem Informasi Bisnis</strong> di Politeknik Negeri Malang. Saya adalah seorang individu yang selalu penasaran dengan dunia teknologi dan strategi bisnis modern. Saya juga suka menulis, terutama tentang sesuatu yang menurut saya menarik.
-                        </p>
-                        <p data-i18n="about_p2">
-                            Perjalanan saya di dunia digital dimulai dari ketertarikan pada pengembangan web, yang kemudian berkembang pesat saat saya mengenal ekosistem Web3 dan Cryptocurrency. Berawal dari eksplorasi di dunia airdrop, saya justru menemukan minat yang mendalam pada teknologi blockchain dan bagaimana desentralisasi dapat mengubah masa depan ekonomi digital.
-                        </p>
-                    </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-12">
-                        <div class="info-card">
-                            <span class="info-label" data-i18n="info_name">Nama Lengkap</span>
-                            <span class="info-value">Muhammad Aklilul Hikam</span>
-                        </div>
-                        <div class="info-card">
-                            <span class="info-label" data-i18n="info_age">Usia</span>
-                            <span class="info-value">20 Tahun</span>
-                        </div>
-                        <div class="info-card">
-                            <span class="info-label" data-i18n="info_loc">Lokasi</span>
-                            <span class="info-value">Malang, Indonesia</span>
-                        </div>
-                        <div class="info-card">
-                            <span class="info-label" data-i18n="info_email">Email</span>
-                            <span class="info-value">aklilhikam6@gmail.com</span>
-                        </div>
-                    </div>
-                </div>
+    <section id="portfolio" class="cs-section">
+        <div class="section-container">
+            <div class="cs-head">
+                <div class="cs-deco-dots"></div>
+                <div class="cs-deco-ring"></div>
+                <div class="sec-label reveal-up" data-i18n="projects_label">Proyek</div>
+                <h2 class="cs-big-title reveal-up" data-i18n="projects_title">CASE STUDY</h2>
+                <p class="cs-sub reveal-up" data-i18n="projects_subtitle">Arsip kontribusi dan eksperimen digital</p>
             </div>
-        </div>
-        <section id="skills" class="py-24 px-6 relative">
-    <div class="max-w-3xl mx-auto">
-        <h2 class="text-3xl font-bold text-center text-white mb-12" data-i18n="abilities_title">Abilities</h2>
-        
-        <div class="space-y-8">
-            <div class="space-y-2">
-                <div class="flex justify-between items-center text-sm font-medium">
-                    <span class="text-slate-200" data-i18n="ability_sleep">Tidur</span>
-                    <span class="text-orange-400">100%</span>
-                </div>
-                <div class="h-3 w-full bg-white/5 rounded-full overflow-hidden border border-white/5">
-                    <div class="h-full bg-gradient-to-r from-orange-500 to-pink-600 rounded-full" style="width: 100%"></div>
-                </div>
-            </div>
-
-            <div class="space-y-2">
-                <div class="flex justify-between items-center text-sm font-medium">
-                    <span class="text-slate-200" data-i18n="ability_learn">Belajar Hal Baru</span>
-                    <span class="text-orange-400">99%</span>
-                </div>
-                <div class="h-3 w-full bg-white/5 rounded-full overflow-hidden border border-white/5">
-                    <div class="h-full bg-gradient-to-r from-orange-500 to-pink-600 rounded-full" style="width: 99%"></div>
-                </div>
-            </div>
-
-            <div class="space-y-2">
-                <div class="flex justify-between items-center text-sm font-medium">
-                    <span class="text-slate-200" data-i18n="ability_idea">Mewujudkan Ide</span>
-                    <span class="text-orange-400">90%</span>
-                </div>
-                <div class="h-3 w-full bg-white/5 rounded-full overflow-hidden border border-white/5">
-                    <div class="h-full bg-gradient-to-r from-orange-500 to-pink-600 rounded-full" style="width: 90%"></div>
-                </div>
-            </div>
-
-            <div class="space-y-2">
-                <div class="flex justify-between items-center text-sm font-medium">
-                    <span class="text-slate-200" data-i18n="ability_coffee">Ngopi</span>
-                    <span class="text-orange-400">88%</span>
-                </div>
-                <div class="h-3 w-full bg-white/5 rounded-full overflow-hidden border border-white/5">
-                    <div class="h-full bg-gradient-to-r from-orange-500 to-pink-600 rounded-full" style="width: 88%"></div>
-                </div>
-            </div>
-
-            <div class="space-y-2">
-                <div class="flex justify-between items-center text-sm font-medium">
-                    <span class="text-slate-200" data-i18n="ability_write">Nulis</span>
-                    <span class="text-orange-400">70%</span>
-                </div>
-                <div class="h-3 w-full bg-white/5 rounded-full overflow-hidden border border-white/5">
-                    <div class="h-full bg-gradient-to-r from-orange-500 to-pink-600 rounded-full" style="width: 100%"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-    </section>
-
-    <section id="portfolio" class="py-24 px-6 bg-white/[0.01]">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="section-heading mb-4" data-i18n="projects_title">Projects</h2>
-                <p class="text-slate-500 uppercase tracking-widest text-xs font-semibold" data-i18n="projects_subtitle">Arsip kontribusi dan eksperimen</p>
-            </div>
-            
-            <div id="portfolio-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            </div>
+            <div id="portfolio-grid" class="cs-list"></div>
         </div>
     </section>
 
-    <section id="contact" class="py-24 px-6">
-        <div class="max-w-5xl mx-auto glass p-8 md:p-16 rounded-[2.5rem] border border-white/5 relative overflow-hidden">
-            <div class="absolute top-0 right-0 w-80 h-80 bg-blue-500/5 blur-[100px] pointer-events-none"></div>
-            
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 relative z-10">
-                <div>
-                    <h2 class="text-4xl font-bold text-white mb-6" data-i18n="contact_title">Mari Berkolaborasi</h2>
-                    <p class="text-slate-400 mb-10 leading-relaxed text-lg font-light" data-i18n="contact_desc">
-                        Terbuka untuk diskusi mengenai pengembangan Web3, riset Blockchain, atau peluang kolaborasi teknis lainnya.
-                    </p>
-                    
-                    <div class="space-y-4">
-                        <a href="mailto:aklilhikam6@gmail.com" class="contact-link group">
-                            <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-blue-500/10 transition-colors">
-                                <i data-lucide="mail" class="w-5 h-5 group-hover:text-blue-400"></i>
-                            </div>
-                            <span>aklilhikam6@gmail.com</span>
-                        </a>
-                        <a href="https://x.com/0xRahvanaa" target="_blank" class="contact-link group">
-                            <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-blue-500/10 transition-colors">
-                                <i data-lucide="twitter" class="w-5 h-5 group-hover:text-blue-400"></i>
-                            </div>
-                            <span>@0xRahvanaa</span>
-                        </a>
-                        <a href="https://www.linkedin.com/in/muhammad-aklilul-hikam-541019331/" target="_blank" class="contact-link group">
-                            <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-blue-500/10 transition-colors">
-                                <i data-lucide="linkedin" class="w-5 h-5 group-hover:text-blue-400"></i>
-                            </div>
-                            <span>LinkedIn Profile</span>
-                        </a>
-                    </div>
-                </div>
-
-                <form id="contact-form" class="space-y-4">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <input type="text" id="name" placeholder="Nama" class="form-input" required data-i18n-ph="form_name">
-                        <input type="email" id="email" placeholder="Email" class="form-input" required data-i18n-ph="form_email">
-                    </div>
-                    <textarea id="message" rows="5" placeholder="Pesan Anda..." class="form-input resize-none" required data-i18n-ph="form_msg"></textarea>
-                    <button type="submit" id="submit-btn" class="btn-primary w-full justify-center py-4 text-sm tracking-widest uppercase font-bold" data-i18n="form_btn">Kirim Pesan</button>
-                </form>
+    <section id="articles" class="articles-section">
+        <div class="section-container">
+            <div class="sec-header-center">
+                <div class="sec-label reveal-up" data-i18n="articles_label">Tulisan</div>
+                <h2 class="sec-title reveal-up" id="article-title" data-i18n="articles_title">Apa yang <span class="ta">Saya Tulis</span></h2>
+                <p class="sec-sub reveal-up" id="article-subtitle" data-i18n="articles_subtitle">Kumpulan tulisan dan opini tentang teknologi &amp; ekonomi</p>
             </div>
+            <div id="metrics-grid" class="art-grid"></div>
         </div>
     </section>
 
-    <footer class="py-12 border-t border-white/5 text-center px-6">
-        <p class="text-slate-500 text-sm tracking-widest uppercase font-medium" data-i18n="footer">
-            &copy; 2026 Muhammad Aklilul Hikam. All rights reserved.
-        </p>
+    <section id="contact" class="contact-section">
+        <div class="section-container">
+            <div class="contact-head">
+                <h2 class="ch-title reveal-up">
+                    <span class="ch-hi" data-i18n="contact_hi">Say Hi!</span><span data-i18n="contact_and"> and tell me about</span>
+                </h2>
+                <div class="ch-arrow-row reveal-up">
+                    <div class="ch-arrow-line">
+                        <div class="ch-line"></div>
+                        <i data-lucide="arrow-right" style="width:32px;height:32px;flex-shrink:0"></i>
+                    </div>
+                    <span class="ch-idea" data-i18n="contact_idea">your idea</span>
+                </div>
+                <p class="ch-sub reveal-up" data-i18n="contact_desc">Terbuka untuk diskusi Web3, Blockchain, atau peluang kolaborasi teknis lainnya.</p>
+            </div>
+
+            <form id="contact-form" class="cf reveal-up">
+                <div class="cf-row">
+                    <div class="cf-group">
+                        <label><span data-i18n="form_name_label">Name</span><span class="req">*</span></label>
+                        <input type="text" id="name" class="cf-input" placeholder="Hello..." data-i18n-ph="form_name_ph" required>
+                    </div>
+                    <div class="cf-group">
+                        <label><span data-i18n="form_email_label">Email</span><span class="req">*</span></label>
+                        <input type="email" id="email" class="cf-input" placeholder="Where can I reply" data-i18n-ph="form_email_ph" required>
+                    </div>
+                </div>
+                <div class="cf-group">
+                    <label><span data-i18n="form_purpose_label">Keperluan?</span><span class="req">*</span></label>
+                    <input type="text" id="purpose" class="cf-input" placeholder="Tulis keperluanmu disini" data-i18n-ph="form_purpose_ph" required>
+                </div>
+                <div class="cf-group">
+                    <label data-i18n="form_msg_label">Pesan</label>
+                    <textarea id="message" class="cf-input cf-ta" rows="4" placeholder="Ceritakan idemu..." data-i18n-ph="form_msg"></textarea>
+                </div>
+                <div class="cf-bottom">
+                    <button type="submit" id="submit-btn" class="btn-submit">
+                        <span id="submit-text" data-i18n="form_btn">Send me your message</span>
+                        <i data-lucide="zap" class="icon-sm"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-logo"><span class="lb">[</span><span class="ln">Hikam</span><span class="lb">]</span></div>
+            <p class="footer-copy" data-i18n="footer">© 2026 Muhammad Aklilul Hikam. All rights reserved.</p>
+            <div class="footer-socials">
+                <a href="https://x.com/0xRahvanaa" target="_blank" rel="noopener"><i data-lucide="twitter"></i></a>
+                <a href="https://www.linkedin.com/in/muhammad-aklilul-hikam-541019331/" target="_blank" rel="noopener"><i data-lucide="linkedin"></i></a>
+                <a href="mailto:aklilhikam6@gmail.com"><i data-lucide="mail"></i></a>
+            </div>
+        </div>
     </footer>
 
     <script src="js/data.js"></script>
