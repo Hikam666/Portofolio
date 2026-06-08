@@ -104,59 +104,165 @@ const translations = {
 };
 
 const portfolioData = [
-    {
-        id: 1,
-        title: "BarbarianX DAO",
-        category: "DAO Governance",
-        category_en: "DAO Governance",
-        description: "Platform komunitas BarbarianX DAO untuk tata kelola terdesentralisasi.",
-        description_en: "BarbarianX DAO community platform for decentralized governance.",
-        link: "https://barbarian-x-dao.vercel.app/",
-        icon: "users"
-    },
-    {
-        id: 2,
-        title: "IRyS Meteor Crash",
-        category: "Mini-Game",
-        category_en: "Mini-Game",
-        description: "Mini-game Arcade yang dikembangkan sebagai instrumen kampanye promosi dalam proyek Web3.",
-        description_en: "Arcade Mini-game developed as a promotional campaign instrument in a Web3 project.",
-        link: "https://irys-meteor-crash.vercel.app/",
-        icon: "gamepad-2"
-    },
-    {
-        id: 3,
-        title: "Katalog TStore",
-        category: "Website E-Commerce",
-        category_en: "E-Commerce Website",
-        description: "Katalog produk digital dengan tema Breaking Bad yang unik dan memorable.",
-        description_en: "Digital product catalog with a unique and memorable Breaking Bad theme.",
-        link: "https://katalog-tstore.vercel.app/",
-        icon: "shopping-bag"
-    },
-    {
-        id: 4,
-        title: "Website Laboratorium",
-        category: "Web App & CMS",
-        category_en: "Web App & CMS",
-        description: "Website laboratorium kampus dengan fitur CMS admin (CRUD) yang dibangun menggunakan database PostgreSQL. Klik untuk melihat video demo cara kerjanya.",
-        description_en: "A campus laboratory website featuring an admin CMS (CRUD) built with a PostgreSQL database. Click to watch the video demo.",
-        link: "https://drive.google.com/drive/folders/1ZoWEmcHafkyWTg-ZARHDWW29MXlo8_sx?usp=sharing",
-        icon: "play-circle"
-    }
+  {
+    id: 1,
+    title: "BarbarianX DAO",
+    category: "DAO Governance",
+    category_en: "DAO Governance",
+    description: "Platform komunitas BarbarianX DAO",
+    description_en: "BarbarianX DAO community platform",
+    link: "https://barbarian-x-dao.vercel.app/",
+    icon: "users"
+  },
+  {
+    id: 2,
+    title: "IRyS Meteor Crash",
+    category: "Mini-Game",
+    category_en: "Mini-Game",
+    description: "Mini-game Arcade Sederhana yang dikembangkan sebagai instrumen kampanye promosi dalam proyek Web3.",
+    description_en: "Simple Arcade Mini-game developed as a promotional campaign instrument in a Web3 project.",
+    link: "https://irys-meteor-crash.vercel.app/",
+    icon: "gamepad-2"
+  },
+  {
+    id: 3,
+    title: "Arsip Hikam",
+    category: "Digital Archive",
+    category_en: "Digital Archive",
+    description: "Platform arsip digital dan landing page personal untuk publikasi tulisan saya.",
+    description_en: "Digital archive platform and personal landing page for my writing publications.",
+    link: "https://arsip-hikam.vercel.app/",
+    icon: "book-open"
+  },
+  {
+    id: 4,
+    title: "Kalkulator Simulasi Investasi dan Inflasi",
+    category: "Digital Tool",
+    category_en: "Digital Tool",
+    description: "Kalkulator untuk mensimulasikan investasi dan inflasi secara interaktif.",
+    description_en: "Calculator to simulate investment and inflation interactively.",
+    link: "https://kalkulator-simulasi.vercel.app/",
+    icon: "calculator"
+  },
+  {
+    id: 5,
+    title: "Katalog TStore",
+    category: "Website E-Commerce",
+    category_en: "E-Commerce Website",
+    description: "Katalog produk untuk toko product digital dengan tema Breaking Bad.",
+    description_en: "Product catalog for a digital product store with a Breaking Bad theme.",
+    link: "https://katalog-tstore.vercel.app/",
+    icon: "shopping-bag"
+  }
 ];
 
 const metricsData = [
-    { id:101, title:"Memahami Scarcity: Mengapa Rencana Thanos Justru Menghancurkan Ekonomi", views:4900, likes:30, shares:15, link:"https://x.com/0xRahvanaa/status/2015782815124819979" },
-    { id:102, title:"Suku Bajo: Penyelam Terkuat, Sang Penjelajah Samudra", views:660, likes:20, shares:4, link:"https://www.kompasiana.com/hiiikam/647700a408a8b50524357193/suku-bajo-penyelam-terkuat-sang-penjelajah-samudra" },
-    { id:103, title:"Kemunculan Oarfish dan Mitos Bencana", views:1491, likes:15, shares:2, link:"https://www.kompasiana.com/hiiikam/6419aaf44addee21a761e183/kemunculan-oarfish-dan-mitos-bencana" },
-    { id:104, title:"Memahami Ekonomi lewat The Last of Us", views:119, likes:11, shares:9, link:"https://x.com/0xRahvanaa/status/2019439347901297057" },
-    { id:105, title:"Kapitalis Lu!: Mengenal Kapitalisme Lewat Ambisi Mr. Krabs", views:2300, likes:20, shares:1, link:"https://x.com/0xRahvanaa/status/2020466307813036159" },
-    { id:106, title:"Memahami Blockchain: Menjawab Kebingungan Saya Dulu", views:450, likes:5, shares:3, link:"https://x.com/0xRahvanaa/status/2021225113644130507" },
-    { id:107, title:"Mikroekonomi: Versi Close-Up dari Dunia Ekonomi", views:300, likes:8, shares:5, link:"https://x.com/0xRahvanaa/status/2023610841883701654" },
-    { id:108, title:"Belajar Opportunity Cost dari Tony Stark: Mengapa Iron Man Menutup Pabrik Senjatanya?", views:600, likes:4, shares:1, link:"https://x.com/0xRahvanaa/status/2024149421215424674" },
-    { id:109, title:"Bank Run: Ketika Semua Orang Pengen Putus Sama Bank", views:800, likes:3, shares:3, link:"https://x.com/0xRahvanaa/status/2025571775556591784" },
-    { id:110, title:"Memahami Cara Pak Habibie Menjinakkan Rupiah", views:1200, likes:15, shares:8, link:"https://x.com/0xRahvanaa/status/2028097383762919794" },
-    { id:111, title:"Memahami Civil War: Ketika Pahlawan Berseteru Karena Prinsip", views:900, likes:11, shares:1, link:"https://x.com/0xRahvanaa/status/2030157296911708322" },
-    { id:112, title:"Memahami Bisnis Money Laundering Walter White dari Breaking Bad", views:2000, likes:12, shares:1, link:"https://x.com/0xRahvanaa/status/2032810272940040560" }
+  {
+    id: 101,
+    title: "Memahami Scarcity: Mengapa Rencana Thanos Justru Menghancurkan Ekonomi",
+    views: 4900,
+    likes: 30,
+    shares: 15,
+    type: 'article',
+    link: "https://x.com/0xRahvanaa/status/2015782815124819979?s=20"
+  },
+  {
+    id: 102,
+    title: "Suku Bajo: Penyelam Terkuat, Sang Penjelajah Samudra",
+    views: 660,
+    likes: 0,
+    shares: 0,
+    type: 'article',
+    link: "https://www.kompasiana.com/hiiikam/647700a408a8b50524357193/suku-bajo-penyelam-terkuat-sang-penjelajah-samudra"
+  },
+  {
+    id: 103,
+    title: "Kemunculan Oarfish dan Mitos Bencana",
+    views: 1491,
+    likes: 0,
+    shares: 0,
+    type: 'article',
+    link: "https://www.kompasiana.com/hiiikam/6419aaf44addee21a761e183/kemunculan-oarfish-dan-mitos-bencana"
+  },
+  {
+    id: 104,
+    title: "Memahami Ekonomi lewat The Last of Us",
+    views: 119,
+    likes: 11,
+    shares: 9,
+    type: 'article',
+    link: "https://x.com/0xRahvanaa/status/2019439347901297057?s=20"
+  },
+  {
+    id: 105,
+    title: "Kapitalis Lu!: Mengenal Kapitalisme Lewat Ambisi Mr. Krabs",
+    views: 2300,
+    likes: 0,
+    shares: 0,
+    type: 'article',
+    link: "https://x.com/0xRahvanaa/status/2020466307813036159?s=20"
+  },
+  {
+    id: 106,
+    title: "Memahami Blockchain: Menjawab Kebingungan saya dulu.",
+    views: 450,
+    likes: 5,
+    shares: 3,
+    type: 'article',
+    link: "https://x.com/0xRahvanaa/status/2021225113644130507?s=20"
+  },
+  {
+    id: 107,
+    title: "Mikroekonomi: Versi Close-Up dari Dunia Ekonomi",
+    views: 300,
+    likes: 8,
+    shares: 5,
+    type: 'article',
+    link: "https://x.com/0xRahvanaa/status/2023610841883701654?s=20"
+  },
+  {
+    id: 108,
+    title: "Belajar Opportunity Cost dari Tony Stark: Mengapa Iron Man Menutup Pabrik Senjatanya?",
+    views: 600,
+    likes: 0,
+    shares: 0,
+    type: 'article',
+    link: "https://x.com/0xRahvanaa/status/2024149421215424674?s=20"
+  },
+  {
+    id: 109,
+    title: "Bank Run: Ketika Semua Orang Pengen \"Putus\" Sama Bank",
+    views: 800,
+    likes: 0,
+    shares: 0,
+    type: 'article',
+    link: "https://x.com/0xRahvanaa/status/2025571775556591784?s=20"
+  },
+  {
+    id: 110,
+    title: "Memahami cara pak Habibie menjinakan rupiah", 
+    views: 1200,
+    likes: 15,
+    shares: 8,
+    type: 'article',
+    link: "https://x.com/0xRahvanaa/status/2028097383762919794?s=20"
+  },
+  {
+    id: 111,
+    title: "Memahami Civil War: Ketika Pahlawan Berbentaran Karna Prinsip",
+    views: 900,
+    likes: 0,
+    shares: 0,
+    type: 'article',
+    link: "https://x.com/0xRahvanaa/status/2030157296911708322?s=20"
+  },
+  {
+    id: 112,
+    title: "Memahami Bisnis Money Laundering Walter White dari Series Breaking Bad",
+    views: 2000,
+    likes: 0,
+    shares: 0,  
+    type: 'article',
+    link: "https://x.com/0xRahvanaa/status/2032810272940040560?s=20"
+  }
 ];
