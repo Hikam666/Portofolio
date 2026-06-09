@@ -30,6 +30,9 @@ const translations = {
         articles_label: "Tulisan",
         articles_title: `Apa yang <span class="ta">Saya Tulis</span>`,
         articles_subtitle:"Kumpulan tulisan dan opini tentang teknologi &amp; ekonomi",
+        designs_label:  "Desain Visual",
+        designs_title:  `Konten <span class="ta">Instagram</span>`,
+        designs_subtitle:"Beberapa eksplorasi desain visual dan konten media sosial.",
         contact_hi:     "Say Hi!",
         contact_and:    " dan ceritakan tentang",
         contact_idea:   "idemu",
@@ -81,6 +84,9 @@ const translations = {
         articles_label: "Writing",
         articles_title: `What I <span class="ta">Write</span>`,
         articles_subtitle:"Collection of writings and opinions on technology &amp; economics",
+        designs_label:  "Visual Designs",
+        designs_title:  `<span class="ta">Instagram</span> Content`,
+        designs_subtitle:"Some visual design explorations and social media content.",
         contact_hi:     "Say Hi!",
         contact_and:    " and tell me about",
         contact_idea:   "your idea",
@@ -215,4 +221,25 @@ const metricsData = [
     type: 'article',
     link: "https://x.com/0xRahvanaa/status/2048346131789426835?s=20"
   }
+];
+
+const designsData = [
+    {
+        id: 1,
+        title: "Instagram Design 1",
+        image: "https://placehold.co/400x400/111c30/3b82f6?text=Design+1",
+        link: "#"
+    },
+    {
+        id: 2,
+        title: "Instagram Design 2",
+        image: "https://placehold.co/400x400/111c30/3b82f6?text=Design+2",
+        link: "#"
+    },
+    {
+        id: 3,
+        title: "Instagram Design 3",
+        image: "https://placehold.co/400x400/111c30/3b82f6?text=Design+3",
+        link: "#"
+    }
 ];

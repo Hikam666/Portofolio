@@ -113,6 +113,7 @@ function initLang() {
         });
         renderPortfolio();
         renderArticles();
+        renderDesigns();
         initTyping();
         if (typeof lucide !== 'undefined') lucide.createIcons();
     };
@@ -229,6 +230,25 @@ function renderArticles() {
     grid.querySelectorAll('.art-card').forEach(el => obs.observe(el));
 }
 
+function renderDesigns() {
+    const grid = document.getElementById('designs-grid');
+    if (!grid) return;
+
+    grid.innerHTML = designsData.map((item, i) => `
+        <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="design-card" style="transition-delay:${i * 55}ms;">
+            <img src="${item.image}" alt="${item.title}" class="design-img" loading="lazy">
+            <div class="design-overlay">
+                <span class="design-info">${item.title}</span>
+            </div>
+        </a>`
+    ).join('');
+
+    const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    grid.querySelectorAll('.design-card').forEach(el => obs.observe(el));
+}
+
 function initRevealObserver() {
     const obs = new IntersectionObserver(entries => {
         entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
@@ -298,9 +318,15 @@ function initFormHandler() {
                 if (btnText) btnText.textContent = t.form_sent;
                 form.reset();
             } else { throw new Error(); }
-        } catch {
+        } catch (err) {
             btn.classList.add('error');
             if (btnText) btnText.textContent = t.form_fail;
+            const errorMsg = document.createElement('div');
+            errorMsg.className = 'form-error-msg';
+            errorMsg.style.cssText = 'color: #ef4444; font-size: 0.85rem; margin-top: 10px; text-align: center;';
+            errorMsg.textContent = 'Gagal mengirim pesan. Silakan hubungi via email atau Twitter langsung.';
+            form.appendChild(errorMsg);
+            setTimeout(() => errorMsg.remove(), 4000);
         } finally {
             setTimeout(() => {
                 btn.disabled = false;
