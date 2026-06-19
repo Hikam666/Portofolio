@@ -16,6 +16,10 @@
                 loader?.classList.add('out');
                 initRevealObserver();
                 initAbilityBars();
+                initCrossFade();
+                initShinyWord();
+                initScrollFloat();
+                initScrollProgress();
             }, 300);
         }
     }, 30);
@@ -32,8 +36,9 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function initCursor() {
-    const cur = document.getElementById('cursor');
-    if (!cur) return;
+    const curRing = document.querySelector('.cur-ring');
+    const curDot = document.querySelector('.cur-dot');
+    if (!curRing || !curDot) return;
 
     let mx = window.innerWidth / 2;
     let my = window.innerHeight / 2;
@@ -41,36 +46,33 @@ function initCursor() {
 
     document.addEventListener('mousemove', e => {
         mx = e.clientX; my = e.clientY;
-        cur.style.left = mx + 'px';
-        cur.style.top  = my + 'px';
+        curDot.style.transform = `translate(${mx}px, ${my}px)`;
     });
 
     const lerp = (a, b, t) => a + (b - a) * t;
     const tick = () => {
-        cx = lerp(cx, mx, 0.14);
-        cy = lerp(cy, my, 0.14);
-        const ring = cur.querySelector('.cur-ring');
-        if (ring) {
-            ring.style.left = (cx - mx) + 'px';
-            ring.style.top  = (cy - my) + 'px';
-        }
+        cx = lerp(cx, mx, 0.15);
+        cy = lerp(cy, my, 0.15);
+        curRing.style.transform = `translate(${cx}px, ${cy}px)`;
         requestAnimationFrame(tick);
     };
     tick();
 
     document.addEventListener('mouseover', e => {
-        if (e.target.closest('a,button,.chip')) {
-            document.body.classList.add('cursor-hover');
+        if (e.target.closest('a,button,.chip,.project-row')) {
+            curRing.classList.add('hovering');
         }
     });
     document.addEventListener('mouseout', e => {
-        if (e.target.closest('a,button,.chip')) {
-            document.body.classList.remove('cursor-hover');
+        if (e.target.closest('a,button,.chip,.project-row')) {
+            curRing.classList.remove('hovering');
         }
     });
 
-    document.addEventListener('mousedown', () => cur.style.transform = 'translate(-50%,-50%) scale(0.7)');
-    document.addEventListener('mouseup',   () => cur.style.transform = 'translate(-50%,-50%) scale(1)');
+    document.addEventListener('mousedown', () => {
+        curRing.classList.add('clicking');
+        setTimeout(() => curRing.classList.remove('clicking'), 400);
+    });
 }
 
 function initNav() {
@@ -157,46 +159,51 @@ function renderPortfolio() {
     const t = translations[currentLang];
 
     grid.innerHTML = portfolioData.map((item, i) => {
-        const isReverse = i % 2 !== 0;
         const cat = currentLang === 'id' ? item.category : (item.category_en || item.category);
         const desc = currentLang === 'id' ? item.description : (item.description_en || item.description);
+        const num = (i + 1).toString().padStart(2, '0');
 
         return `
-        <div class="cs-item ${isReverse ? 'reverse' : ''}" style="transition-delay:${i * 80}ms">
-            <div class="cs-mockup">
-                <div class="cs-mockup-inner">
-                    <div class="cs-screen">
-                        <div class="cs-screen-bar">
-                            <span></span><span></span><span></span>
-                        </div>
-                        <div class="cs-screen-line w80"></div>
-                        <div class="cs-screen-line w60"></div>
-                        <div class="cs-screen-line w90"></div>
-                        <div class="cs-screen-img">
-                            <i data-lucide="${item.icon}" style="width:28px;height:28px;color:var(--blue-s);opacity:0.5"></i>
-                        </div>
-                        <div class="cs-screen-line w40" style="margin-top:0.6rem"></div>
-                    </div>
-                </div>
+        <div class="project-row" style="transition-delay:${i * 80}ms">
+            <div class="project-title">
+                <span class="project-name">${item.title}</span>
+                <span class="project-year">${cat}</span>
             </div>
-            <div class="cs-text">
-                <span class="cs-cat">${cat}</span>
-                <h3 class="cs-project-title">${item.title}</h3>
-                <p class="cs-desc">${desc}</p>
-                <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="cs-link">
-                    ${t.open_project}
-                    <i data-lucide="arrow-up-right" style="width:15px;height:15px"></i>
-                </a>
+            <div class="project-detail">
+                <div class="project-content">
+                    <span class="project-number">${num}</span>
+                    <p>${desc}</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Web3</span>
+                        <span class="project-tag">UI/UX</span>
+                    </div>
+                    <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="cs-link" style="margin-top: 1.5rem; display: inline-flex;">
+                        ${t.open_project}
+                        <i data-lucide="arrow-up-right" style="width:15px;height:15px"></i>
+                    </a>
+                </div>
+                <div class="project-image">
+                    <img src="https://placehold.co/600x400/111c30/3b82f6?text=${item.title.replace(/ /g, '+')}" alt="${item.title}" loading="lazy">
+                </div>
             </div>
         </div>`;
     }).join('');
 
     if (typeof lucide !== 'undefined') lucide.createIcons();
 
+    grid.querySelectorAll('.project-row').forEach(row => {
+        row.addEventListener('click', (e) => {
+            if (e.target.closest('.cs-link')) return; 
+            const wasExpanded = row.classList.contains('expanded');
+            grid.querySelectorAll('.project-row.expanded').forEach(r => r.classList.remove('expanded'));
+            if (!wasExpanded) row.classList.add('expanded');
+        });
+    });
+
     const obs = new IntersectionObserver(entries => {
         entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
     }, { threshold: 0.1 });
-    grid.querySelectorAll('.cs-item').forEach(el => obs.observe(el));
+    grid.querySelectorAll('.project-row').forEach(el => obs.observe(el));
 }
 
 function renderArticles() {
@@ -334,5 +341,55 @@ function initFormHandler() {
                 if (btnText) btnText.textContent = t.form_btn;
             }, 3500);
         }
+    });
+}
+
+function initCrossFade() {
+    const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.section').forEach(el => obs.observe(el));
+}
+
+function initShinyWord() {
+    document.querySelectorAll('.shiny-word').forEach(el => {
+        el.innerHTML = el.textContent.split('').map((c, i) =>
+            c === ' ' ? ' ' : `<span class="char" style="--char-delay:${i * 50}ms">${c}</span>`
+        ).join('');
+    });
+
+    const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); obs.unobserve(e.target); } });
+    }, { threshold: 0.2 });
+    document.querySelectorAll('.shiny-word').forEach(el => obs.observe(el));
+}
+
+function initScrollFloat() {
+    const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+    }, { threshold: 0.2 });
+    document.querySelectorAll('.scroll-float').forEach(el => obs.observe(el));
+
+    window.addEventListener('scroll', () => {
+        document.querySelectorAll('.scroll-float').forEach(el => {
+            const rect = el.getBoundingClientRect();
+            const visible = rect.top < window.innerHeight && rect.bottom > 0;
+            if (visible) {
+                const progress = 1 - (rect.top / window.innerHeight);
+                el.style.transform = `translateY(${30 - progress * 30}px)`;
+                el.style.opacity = Math.min(progress * 2, 1);
+            }
+        });
+    });
+}
+
+function initScrollProgress() {
+    const bar = document.getElementById('scrollBar');
+    if (!bar) return;
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        bar.style.height = scrollPercent + '%';
     });
 }
