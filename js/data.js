@@ -185,61 +185,29 @@ const metricsData = [
     { id:110, title:"Memahami Cara Pak Habibie Menjinakkan Rupiah", views:1200, likes:15, shares:8, link:"https://x.com/0xRahvanaa/status/2028097383762919794" },
     { id:111, title:"Memahami Civil War: Ketika Pahlawan Berseteru Karena Prinsip", views:900, likes:11, shares:1, link:"https://x.com/0xRahvanaa/status/2030157296911708322" },
     { id:112, title:"Memahami Bisnis Money Laundering Walter White dari Breaking Bad", views:2000, likes:12, shares:1, link:"https://x.com/0xRahvanaa/status/2032810272940040560" },
-  {
-    id: 113,
-    title: "Memahami Gus Fring: Masterclass Monopoli dan Integrasi Vertikal",
-    views: 431,
-    likes: 0,
-    shares: 0,
-    type: 'article',
-    link: "https://x.com/0xRahvanaa/status/2036058432575561931?s=20"
-  },
-  {
-    id: 114,
-    title: "Memahami John Constantine: Penyihir Paling Berbahaya Karena Kelicikannya",
-    views: 0,
-    likes: 0,
-    shares: 0,
-    type: 'article',
-    link: "https://x.com/0xRahvanaa/status/2045493350879691214?s=20"
-  },
-  {
-    id: 115,
-    title: "Memahami cara Saul Good Man Memanipulasi Hukum di Better Call Saul.",
-    views: 0,
-    likes: 0,
-    shares: 0,
-    type: 'article',
-    link: "https://x.com/0xRahvanaa/status/2046969446603047245?s=20"
-  },
-  {
-    id: 116,
-    title: "Berkenalan dengan Jaringan BASE, L2 ETH dengan volume degen tertinggi dan rumor launch token $BASE",
-    views: 0,
-    likes: 0,
-    shares: 0,
-    type: 'article',
-    link: "https://x.com/0xRahvanaa/status/2048346131789426835?s=20"
-  }
+    { id: 113, title: "Memahami Gus Fring: Masterclass Monopoli dan Integrasi Vertikal", views: 431, likes: 0, shares: 0, type: 'article', link: "https://x.com/0xRahvanaa/status/2036058432575561931?s=20" },
+    { id: 114, title: "Memahami John Constantine: Penyihir Paling Berbahaya Karena Kelicikannya", views: 0, likes: 0, shares: 0, type: 'article', link: "https://x.com/0xRahvanaa/status/2045493350879691214?s=20" },
+    { id: 115, title: "Memahami cara Saul Good Man Memanipulasi Hukum di Better Call Saul.", views: 0, likes: 0, shares: 0, type: 'article', link: "https://x.com/0xRahvanaa/status/2046969446603047245?s=20" },
+    { id: 116, title: "Berkenalan dengan Jaringan BASE, L2 ETH dengan volume degen tertinggi dan rumor launch token $BASE", views: 0, likes: 0, shares: 0, type: 'article', link: "https://x.com/0xRahvanaa/status/2048346131789426835?s=20" }
 ];
 
 const designsData = [
     {
         id: 1,
-        title: "Instagram Design 1",
-        image: "https://placehold.co/400x400/111c30/3b82f6?text=Design+1",
-        link: "#"
+        title: "Instagram Content #1",
+        image: "https://placehold.co/500x500/111c30/3b82f6?text=IG+Post+#1",
+        link: "https://www.instagram.com/p/DZuLvHTGPrJ/"
     },
     {
         id: 2,
-        title: "Instagram Design 2",
-        image: "https://placehold.co/400x400/111c30/3b82f6?text=Design+2",
-        link: "#"
+        title: "Instagram Content #2",
+        image: "https://placehold.co/500x500/111c30/3b82f6?text=IG+Post+#2",
+        link: "https://www.instagram.com/p/DZ_38ABmAxJ/"
     },
     {
         id: 3,
-        title: "Instagram Design 3",
-        image: "https://placehold.co/400x400/111c30/3b82f6?text=Design+3",
-        link: "#"
+        title: "Instagram Content #3",
+        image: "https://placehold.co/500x500/111c30/3b82f6?text=IG+Post+#3",
+        link: "https://www.instagram.com/p/Dbf1onbGJuZ/"
     }
 ];
