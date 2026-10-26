@@ -14,12 +14,27 @@ html {
 }
 
 body {
-  cursor: none;
-  overflow-x: hidden;
+  overflow-x: clip;
   background-color: #f2ede8;
 }
 
-a, button { cursor: none; }
+@media (pointer: fine) {
+  body {
+    cursor: none;
+  }
+  a, button {
+    cursor: none;
+  }
+}
+
+@media (pointer: coarse) {
+  body {
+    cursor: auto;
+  }
+  a, button {
+    cursor: pointer;
+  }
+}
 
 ::selection {
   background: #3b6fe0;

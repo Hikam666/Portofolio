@@ -15,7 +15,7 @@ import CitySkylineFooter from './components/CitySkylineFooter';
 export default function App() {
   return (
     <LanguageProvider>
-      <div className="min-h-screen bg-cream text-stone-900 relative selection:bg-blue-casual selection:text-white font-body">
+      <div className="min-h-screen bg-cream text-stone-900 relative selection:bg-blue-casual selection:text-white font-body w-full overflow-x-clip">
         {/* Global Interactive Cursor & Background Effects */}
         <PixelCursor />
         <SparkleTrail />

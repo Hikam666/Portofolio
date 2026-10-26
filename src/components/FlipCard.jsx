@@ -25,7 +25,7 @@ export default function FlipCard() {
     <div className="flex flex-col items-center">
       {/* 3D Perspective Card Container */}
       <div
-        className="w-72 sm:w-80 md:w-96 h-88 sm:h-96 md:h-[430px] cursor-pointer select-none"
+        className="w-[270px] xs:w-72 sm:w-80 md:w-96 h-[370px] xs:h-[380px] sm:h-96 md:h-[430px] cursor-pointer select-none max-w-[calc(100vw-2.5rem)]"
         style={{ perspective: '1200px' }}
         onClick={() => setIsFlipped((prev) => !prev)}
         onMouseMove={handleMouseMove}

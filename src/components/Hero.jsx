@@ -16,10 +16,10 @@ export default function Hero() {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6 }}
-            className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-display font-extrabold tracking-tight uppercase leading-none flex flex-col items-center justify-center"
+            className="text-3xl xs:text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-display font-extrabold tracking-tight uppercase leading-none flex flex-col items-center justify-center break-words"
           >
             <span className="text-outline">MUHAMMAD</span>
-            <span className="text-stone-900 -mt-2 sm:-mt-4 lg:-mt-6">AKLILUL HIKAM</span>
+            <span className="text-stone-900 -mt-1 xs:-mt-2 sm:-mt-4 lg:-mt-6">AKLILUL HIKAM</span>
           </motion.h1>
         </div>
 
@@ -83,7 +83,7 @@ export default function Hero() {
             initial={{ x: 20, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-col sm:flex-row md:flex-col lg:flex-row items-start md:items-end lg:items-center justify-end gap-2.5"
+            className="flex flex-wrap items-center justify-start md:justify-end gap-2"
           >
             {siteConfig.socials.map((social) => (
               <a
@@ -91,7 +91,7 @@ export default function Hero() {
                 href={social.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-4 py-2 bg-white hover:bg-stone-900 hover:text-white border-2 border-stone-900 rounded-full font-mono text-xs font-semibold text-stone-800 transition-all shadow-sm flex items-center gap-2"
+                className="px-3.5 sm:px-4 py-2 bg-white hover:bg-stone-900 hover:text-white border-2 border-stone-900 rounded-full font-mono text-xs font-semibold text-stone-800 transition-all shadow-sm flex items-center gap-2"
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-blue-casual" />
                 <span>{social.label}</span>

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
 import { experienceData } from '../data/portfolio';
 import { useLanguage } from '../context/LanguageContext';
@@ -6,15 +6,26 @@ import { useLanguage } from '../context/LanguageContext';
 export default function LegoTimeline() {
   const { lang } = useLanguage();
   const [selectedId, setSelectedId] = useState(null);
+  const [isMobile, setIsMobile] = useState(false);
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // 4 Core Brick configurations matching career track record
   const brickConfigs = [
     {
       id: 1,
       brickName: 'Media Network',
-      offsetX: '-24px',
+      offsetX: '-20px',
+      offsetXMobile: '-6px',
       color: '#d45d34', // Foren Orange
       hasLeftGrooves: true,
       hasDot: true,
@@ -23,14 +34,16 @@ export default function LegoTimeline() {
     {
       id: 2,
       brickName: 'BarbarianX',
-      offsetX: '32px',
+      offsetX: '24px',
+      offsetXMobile: '8px',
       color: '#2f63e6', // Hydrogen Blue
       hasPixelChecker: true,
     },
     {
       id: 3,
       brickName: 'Infonomic',
-      offsetX: '-18px',
+      offsetX: '-14px',
+      offsetXMobile: '-4px',
       color: '#18191f', // Earnipay Black
       hasLeftGrooves: true,
       hasDotTexture: true,
@@ -38,7 +51,8 @@ export default function LegoTimeline() {
     {
       id: 4,
       brickName: 'Polinema',
-      offsetX: '16px',
+      offsetX: '12px',
+      offsetXMobile: '4px',
       color: '#34a853', // OnePipe Green
       hasPixelChecker: true,
     },
@@ -82,9 +96,9 @@ export default function LegoTimeline() {
               >
                 {/* Brick & Metadata Row */}
                 <div
-                  className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6"
+                  className="flex flex-row items-center justify-center gap-2.5 sm:gap-6"
                   style={{
-                    transform: `translateX(${config.offsetX})`,
+                    transform: `translateX(${isMobile ? config.offsetXMobile : config.offsetX})`,
                   }}
                 >
                   {/* The Physical Lego Brick (Reliable spring drop triggered by parent inView) */}
@@ -101,17 +115,17 @@ export default function LegoTimeline() {
                     whileHover={{ scale: 1.02, y: -2 }}
                     whileTap={{ scale: 0.98 }}
                     onClick={() => setSelectedId(isSelected ? null : item.id)}
-                    className="relative w-full sm:w-[340px] h-20 sm:h-22 rounded-xl flex items-center justify-between px-6 text-white font-mono font-bold cursor-pointer select-none transition-shadow duration-200 border-b-4 border-black/35 shadow-lg hover:shadow-2xl overflow-visible"
+                    className="relative w-[195px] xs:w-[225px] sm:w-[340px] h-16 sm:h-22 rounded-xl flex items-center justify-between px-3 sm:px-6 text-white font-mono font-bold cursor-pointer select-none transition-shadow duration-200 border-b-4 border-black/35 shadow-lg hover:shadow-2xl overflow-visible shrink-0"
                     style={{
                       backgroundColor: config.color,
                     }}
                   >
                     {/* Top Lego Studs (4 Round Pegs with 3D Bevel) */}
-                    <div className="absolute -top-3 left-6 right-6 flex justify-between pointer-events-none z-20">
+                    <div className="absolute -top-2 sm:-top-3 left-3 right-3 sm:left-6 sm:right-6 flex justify-between pointer-events-none z-20">
                       {[0, 1, 2, 3].map((pegIdx) => (
                         <div
                           key={pegIdx}
-                          className="w-8 sm:w-10 h-3 rounded-t-md shadow-sm border-t border-x border-white/25"
+                          className="w-5 xs:w-6 sm:w-10 h-2 sm:h-3 rounded-t-md shadow-sm border-t border-x border-white/25"
                           style={{
                             backgroundColor: config.color,
                             filter: 'brightness(1.15)',
@@ -122,12 +136,12 @@ export default function LegoTimeline() {
 
                     {/* Left Decorative Grooves (≡) */}
                     {config.hasLeftGrooves && (
-                      <div className="flex flex-col space-y-1 opacity-70 -ml-2 mr-2 pointer-events-none">
-                        <span className="w-4 h-1 rounded-full bg-white/80" />
-                        <span className="w-4 h-1 rounded-full bg-white/80" />
-                        <span className="w-4 h-1 rounded-full bg-white/80" />
-                        <span className="w-4 h-1 rounded-full bg-white/80" />
-                        <span className="w-4 h-1 rounded-full bg-white/80" />
+                      <div className="hidden xs:flex flex-col space-y-0.5 sm:space-y-1 opacity-70 -ml-1 sm:-ml-2 mr-1 sm:mr-2 pointer-events-none">
+                        <span className="w-2.5 sm:w-4 h-0.5 sm:h-1 rounded-full bg-white/80" />
+                        <span className="w-2.5 sm:w-4 h-0.5 sm:h-1 rounded-full bg-white/80" />
+                        <span className="w-2.5 sm:w-4 h-0.5 sm:h-1 rounded-full bg-white/80" />
+                        <span className="w-2.5 sm:w-4 h-0.5 sm:h-1 rounded-full bg-white/80" />
+                        <span className="w-2.5 sm:w-4 h-0.5 sm:h-1 rounded-full bg-white/80" />
                       </div>
                     )}
 
@@ -137,13 +151,13 @@ export default function LegoTimeline() {
                     )}
 
                     {/* Brick Main Name & Dot */}
-                    <div className="flex items-center gap-2.5 z-10">
-                      <span className="text-2xl sm:text-3xl font-display font-extrabold tracking-tight">
+                    <div className="flex items-center gap-1.5 sm:gap-2.5 z-10 min-w-0">
+                      <span className="text-sm xs:text-base sm:text-3xl font-display font-extrabold tracking-tight truncate max-w-[110px] xs:max-w-[140px] sm:max-w-none">
                         {config.brickName}
                       </span>
                       {config.hasDot && (
                         <span
-                          className="w-3.5 h-3.5 rounded-full inline-block shadow-sm"
+                          className="w-2 h-2 sm:w-3.5 sm:h-3.5 rounded-full inline-block shadow-sm shrink-0"
                           style={{ backgroundColor: config.dotColor }}
                         />
                       )}
@@ -151,7 +165,7 @@ export default function LegoTimeline() {
 
                     {/* 8-bit Checkerboard Accent on Bottom Right */}
                     {config.hasPixelChecker && (
-                      <div className="absolute bottom-1 right-2 grid grid-cols-4 grid-rows-2 w-7 h-3.5 opacity-80 pointer-events-none">
+                      <div className="absolute bottom-1 right-2 grid grid-cols-4 grid-rows-2 w-5 sm:w-7 h-2.5 sm:h-3.5 opacity-80 pointer-events-none">
                         <span className="bg-black" />
                         <span className="bg-white" />
                         <span className="bg-black" />
@@ -164,17 +178,17 @@ export default function LegoTimeline() {
                     )}
 
                     {/* Expand Indicator */}
-                    <span className="text-[10px] font-mono tracking-wider opacity-90 z-10 px-2 py-0.5 rounded bg-black/25 border border-white/20">
+                    <span className="text-[8px] xs:text-[9px] sm:text-[10px] font-mono tracking-wider opacity-90 z-10 px-1 xs:px-1.5 py-0.5 rounded bg-black/25 border border-white/20 shrink-0">
                       {isSelected ? 'CLOSE' : 'INFO'}
                     </span>
                   </motion.div>
 
                   {/* Clean Monospace Metadata Beside Brick */}
-                  <div className="w-full sm:w-56 text-center sm:text-left font-mono">
-                    <p className="text-xs sm:text-sm font-bold text-stone-900 tracking-wider">
+                  <div className="w-[105px] xs:w-[125px] sm:w-56 text-left font-mono shrink-0 pl-1">
+                    <p className="text-[10px] xs:text-[11px] sm:text-sm font-bold text-stone-900 tracking-wider whitespace-nowrap">
                       {item.period}
                     </p>
-                    <p className="text-[11px] sm:text-xs font-semibold text-stone-600 uppercase tracking-tight">
+                    <p className="text-[9px] xs:text-[10px] sm:text-xs font-semibold text-stone-600 uppercase tracking-tight leading-snug line-clamp-2 sm:line-clamp-none">
                       {item.role}
                     </p>
                   </div>

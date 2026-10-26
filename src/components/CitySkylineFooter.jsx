@@ -16,9 +16,9 @@ export default function CitySkylineFooter() {
         {/* Flying Iron Man Patrol across City Skyline */}
         <motion.div
           animate={{
-            x: ['-5vw', '90vw', '-5vw'],
+            x: ['-2vw', '84vw', '-2vw'],
             y: [0, -10, 5, -8, 0],
-            scaleX: [-1, -1, 1, 1, -1], // Heading right when flying to 90vw, heading left when returning
+            scaleX: [-1, -1, 1, 1, -1], // Heading right when flying to 84vw, heading left when returning
           }}
           transition={{
             x: {
@@ -154,7 +154,7 @@ export default function CitySkylineFooter() {
         </div>
 
         {/* Socials & Back to Top */}
-        <div className="flex items-center gap-4">
+        <div className="flex flex-wrap items-center justify-center sm:justify-end gap-x-3 gap-y-2">
           <a
             href="https://x.com/0xRahvanaa"
             target="_blank"
@@ -163,7 +163,7 @@ export default function CitySkylineFooter() {
           >
             X (Twitter)
           </a>
-          <span>·</span>
+          <span className="text-stone-600">·</span>
           <a
             href="https://www.linkedin.com/in/muhammad-aklilul-hikam-541019331/"
             target="_blank"
@@ -172,7 +172,7 @@ export default function CitySkylineFooter() {
           >
             LinkedIn
           </a>
-          <span>·</span>
+          <span className="text-stone-600">·</span>
           <a
             href="https://www.instagram.com/hikam.182/"
             target="_blank"
@@ -181,7 +181,7 @@ export default function CitySkylineFooter() {
           >
             Instagram
           </a>
-          <span>·</span>
+          <span className="text-stone-600">·</span>
           <button
             onClick={scrollToTop}
             className="px-3 py-1 bg-stone-800 hover:bg-blue-casual text-white rounded-full transition-all flex items-center gap-1 font-bold"

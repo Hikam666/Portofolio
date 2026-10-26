@@ -41,7 +41,7 @@ export default function PixelCursor() {
   }, []);
 
   return (
-    <>
+    <div className="hidden md:block">
       {/* Center Pixel Box Pointer */}
       <div
         className="fixed pointer-events-none z-[99999] transition-transform duration-75"
@@ -74,6 +74,6 @@ export default function PixelCursor() {
           backgroundColor: 'rgba(59, 111, 224, 0.08)',
         }}
       />
-    </>
+    </div>
   );
 }

@@ -169,10 +169,11 @@ export default function ArticlesGrid() {
                 type="button"
                 onClick={() => handlePageChange(safeCurrentPage - 1)}
                 disabled={safeCurrentPage <= 1}
-                className="px-3 py-1.5 rounded-lg border-2 border-stone-900 font-bold bg-white text-stone-900 disabled:opacity-40 disabled:pointer-events-none hover:bg-stone-100 transition-colors shadow-sm flex items-center gap-1"
+                className="px-2.5 sm:px-3 py-1.5 rounded-lg border-2 border-stone-900 font-bold bg-white text-stone-900 disabled:opacity-40 disabled:pointer-events-none hover:bg-stone-100 transition-colors shadow-sm flex items-center gap-1"
+                aria-label="Previous Page"
               >
                 <span>←</span>
-                <span>{lang === 'id' ? 'Sebelumnya' : 'Prev'}</span>
+                <span className="hidden xs:inline">{lang === 'id' ? 'Sebelumnya' : 'Prev'}</span>
               </button>
 
               {/* Page Number Pills */}
@@ -182,7 +183,7 @@ export default function ArticlesGrid() {
                     key={pageNum}
                     type="button"
                     onClick={() => handlePageChange(pageNum)}
-                    className={`w-8 h-8 rounded-lg border-2 text-xs font-bold transition-all flex items-center justify-center ${
+                    className={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg border-2 text-xs font-bold transition-all flex items-center justify-center ${
                       safeCurrentPage === pageNum
                         ? 'bg-stone-900 text-white border-stone-900 shadow-sm'
                         : 'bg-white text-stone-700 border-stone-300 hover:border-stone-900'
@@ -198,9 +199,10 @@ export default function ArticlesGrid() {
                 type="button"
                 onClick={() => handlePageChange(safeCurrentPage + 1)}
                 disabled={safeCurrentPage >= totalPages}
-                className="px-3 py-1.5 rounded-lg border-2 border-stone-900 font-bold bg-white text-stone-900 disabled:opacity-40 disabled:pointer-events-none hover:bg-stone-100 transition-colors shadow-sm flex items-center gap-1"
+                className="px-2.5 sm:px-3 py-1.5 rounded-lg border-2 border-stone-900 font-bold bg-white text-stone-900 disabled:opacity-40 disabled:pointer-events-none hover:bg-stone-100 transition-colors shadow-sm flex items-center gap-1"
+                aria-label="Next Page"
               >
-                <span>{lang === 'id' ? 'Selanjutnya' : 'Next'}</span>
+                <span className="hidden xs:inline">{lang === 'id' ? 'Selanjutnya' : 'Next'}</span>
                 <span>→</span>
               </button>
             </div>

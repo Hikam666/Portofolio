@@ -29,7 +29,8 @@ export default function Navbar() {
             />
           </div>
           <span className="font-display font-bold text-xs sm:text-sm text-stone-900 tracking-tight whitespace-nowrap">
-            Muhammad Aklilul Hikam
+            <span className="hidden sm:inline">Muhammad Aklilul Hikam</span>
+            <span className="sm:hidden">M. Aklilul Hikam</span>
           </span>
         </a>
 
@@ -75,7 +76,7 @@ export default function Navbar() {
           {/* Mobile Menu Toggle Button */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden bg-white border-2 border-stone-900 rounded-full w-9 h-9 flex items-center justify-center text-sm font-bold shadow-sm"
+            className="md:hidden bg-white border-2 border-stone-900 rounded-full w-10 h-10 flex items-center justify-center text-sm font-bold shadow-sm active:scale-95 transition-transform"
             aria-label="Toggle Menu"
           >
             {mobileOpen ? '✕' : '☰'}
@@ -91,7 +92,7 @@ export default function Navbar() {
               key={link.href}
               href={link.href}
               onClick={() => setMobileOpen(false)}
-              className="py-2 px-3 rounded-lg hover:bg-stone-100 font-semibold text-stone-900 flex justify-between items-center"
+              className="py-2.5 px-3 rounded-lg hover:bg-stone-100 font-semibold text-stone-900 flex justify-between items-center active:bg-stone-200 transition-colors"
             >
               <span>{link.label}</span>
               <span className="text-stone-400">→</span>
@@ -99,7 +100,7 @@ export default function Navbar() {
           ))}
           <a
             href="mailto:aklilhikam6@gmail.com"
-            className="mt-2 text-center py-2.5 bg-stone-900 text-white rounded-xl font-mono text-xs font-bold"
+            className="mt-2 text-center py-2.5 bg-stone-900 text-white rounded-xl font-mono text-xs font-bold active:bg-stone-800 transition-colors"
           >
             aklilhikam6@gmail.com
           </a>
