@@ -7,6 +7,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import FolderTabs from './components/FolderTabs';
 import LegoTimeline from './components/LegoTimeline';
+import SkillsArsenal from './components/SkillsArsenal';
 import ArticlesGrid from './components/ArticlesGrid';
 import InstagramShowcase from './components/InstagramShowcase';
 import ContactSignpost from './components/ContactSignpost';
@@ -33,6 +34,9 @@ export default function App() {
 
           {/* Experience: Falling and Stacking Lego Timeline */}
           <LegoTimeline />
+
+          {/* Technical Skills & AI Agent Hermes Arsenal */}
+          <SkillsArsenal />
 
           {/* Writings: Minimalist Grid Cards (21 Articles) */}
           <ArticlesGrid />

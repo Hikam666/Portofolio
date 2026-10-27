@@ -8,6 +8,7 @@ export default function Navbar() {
   const navLinks = [
     { label: lang === 'id' ? 'Karya' : 'Work', href: '#work' },
     { label: lang === 'id' ? 'Pengalaman' : 'Experience', href: '#experience' },
+    { label: lang === 'id' ? 'Keahlian' : 'Skills', href: '#skills' },
     { label: lang === 'id' ? 'Artikel' : 'Articles', href: '#articles' },
     { label: lang === 'id' ? 'Instagram' : 'Instagram', href: '#instagram' },
     { label: lang === 'id' ? 'Kontak' : 'Contact', href: '#contact' },
@@ -35,7 +36,7 @@ export default function Navbar() {
         </a>
 
         {/* Center Pill: Navigation Menu (Gambar 2 Style) */}
-        <nav className="hidden md:flex items-center space-x-6 bg-white border-2 border-stone-900 rounded-full px-6 py-2 shadow-sm">
+        <nav className="hidden md:flex items-center space-x-4 lg:space-x-6 bg-white border-2 border-stone-900 rounded-full px-5 py-2 shadow-sm">
           {navLinks.map((link) => (
             <a
               key={link.href}

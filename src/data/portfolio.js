@@ -90,7 +90,7 @@ export const experienceData = [
   },
   {
     id: 4,
-    period: '2023 - Now',
+    period: '2024 - Now',
     role: 'Mahasiswa Sistem Informasi Bisnis',
     company: 'Politeknik Negeri Malang',
     color: '#34a853', // Forest Emerald Green (like OnePipe in owoetoni)
@@ -460,8 +460,211 @@ export const instagramData = [
 export const signpostLinks = [
   { title: 'Work', href: '#work', bg: '#93c5fd', text: '#1a1a2e', icon: '\u25C6' },
   { title: 'Experience', href: '#experience', bg: '#f97316', text: '#fff', icon: '\u2736' },
+  { title: 'Skills', href: '#skills', bg: '#8b5cf6', text: '#fff', icon: '\u25C8' },
   { title: 'Articles', href: '#articles', bg: '#22c55e', text: '#fff', icon: '\u25CF' },
   { title: 'Instagram', href: '#instagram', bg: '#ec4899', text: '#fff', icon: '✦' },
   { title: 'LinkedIn', href: 'https://www.linkedin.com/in/muhammad-aklilul-hikam-541019331/', bg: '#3b82f6', text: '#fff', icon: '\u2605', external: true },
   { title: 'X', href: 'https://x.com/0xRahvanaa', bg: '#ef4444', text: '#fff', icon: '\u2197', external: true },
+];
+
+// Highlight Feature: AI Agent Hermes Exploration
+export const aiAgentHighlight = {
+  badge: 'AUTONOMOUS WORKFLOWS',
+  title: 'Eksplorasi AI Agent Menggunakan Hermes',
+  titleEn: 'Autonomous AI Agent Exploration (Hermes)',
+  subtitle: {
+    id: 'Eksplorasi orkestrasi agent otonom untuk otomasi multi-task, scraping data cerdas, dan penyelesaian masalah teknis terstruktur.',
+    en: 'Orchestrating autonomous agents for multi-step workflow automation, intelligent data extraction, and structured technical problem solving.',
+  },
+  capabilities: [
+    {
+      title: 'Agentic Loop & Autonomous Execution',
+      desc: {
+        id: 'Menjalankan agen cerdas untuk menyelesaikan tugas multi-tahap secara mandiri dengan loop observasi, rencana, dan tindakan terverifikasi.',
+        en: 'Deploying autonomous agents to execute complex multi-step workflows with verified observe, plan, and act loops.',
+      },
+    },
+    {
+      title: 'Automated PoC & Security Recon',
+      desc: {
+        id: 'Pemanfaatan agen untuk recon reconnaissance awal, pembuatan skrip verifikasi celah, dan pembuatan laporan teknis Proof-of-Concept cepat.',
+        en: 'Leveraging agentic workflows for initial target reconnaissance, vulnerability PoC scripting, and structured security reporting.',
+      },
+    },
+    {
+      title: 'Multi-Account Mass Automation',
+      desc: {
+        id: 'Integrasi agen untuk mengelola automasi platform, routing tugas paralel, dan penanganan alur interaksi terprogram.',
+        en: 'Integrating agents to manage multi-account platform automation, parallel task routing, and programmatic workflows.',
+      },
+    },
+  ],
+  tags: [
+    'Hermes Framework',
+    'Autonomous Agent Loops',
+    'Multi-Tool Use',
+    'Automated Recon & PoC',
+    'Headless Workflows',
+    'Prompt Architecture',
+  ],
+};
+
+// 8 Core Technical Arsenal Categories
+export const skillsCategories = [
+  {
+    id: 'security',
+    category: 'Bug Bounty / Security',
+    categoryEn: 'Bug Bounty & Web Security',
+    color: '#ef4444',
+    badge: 'SECURITY',
+    glyph: '[SEC]',
+    description: {
+      id: 'Pengujian keamanan web2 dan ekosistem web3, audit smart contract, dan penyusunan laporan temuan celah keamanan.',
+      en: 'Web2 and Web3 security assessment, smart contract auditing, and structured vulnerability Proof-of-Concept reporting.',
+    },
+    skills: [
+      'Web2 / Web3 Recon',
+      'Smart Contract Audit',
+      'SSRF / CORS / GraphQL',
+      'XSS / SQLi Testing',
+      'Burp-Style Testing',
+      'PoC + Security Reporting',
+    ],
+  },
+  {
+    id: 'automation',
+    category: 'Automation',
+    categoryEn: 'Mass Automation & Bots',
+    color: '#f97316',
+    badge: 'AUTOMATION',
+    glyph: '[AUTO]',
+    description: {
+      id: 'Otomasi alur kerja repetitif skala besar, bot terprogram, dan integrasi penanganan captcha.',
+      en: 'High-throughput repetitive workflow automation, programmatic bot fleets, and automated verification solvers.',
+    },
+    skills: [
+      'Telegram Mass Automation (Multi-Akun)',
+      'Airdrop Bots & Scripts',
+      'Captcha Solver Integration',
+      'Headless Automation',
+      'Webhook & API Triggers',
+    ],
+  },
+  {
+    id: 'coding',
+    category: 'Coding & Dev',
+    categoryEn: 'Full-Stack Web Engineering',
+    color: '#2f63e6',
+    badge: 'DEVELOPMENT',
+    glyph: '[DEV]',
+    description: {
+      id: 'Pengembangan aplikasi web modern full-stack dengan performa tinggi, animasi interaktif, dan debugging mendalam.',
+      en: 'Modern full-stack web engineering with clean architecture, interactive canvas animations, and systematic debugging.',
+    },
+    skills: [
+      'Laravel (PHP)',
+      'Next.js / React',
+      'Chrome Extension Patching',
+      'Deep Debugging & Dev-Workflow',
+      'p5.js Interactive Canvas',
+      'Animasi Web & WebGL',
+    ],
+  },
+  {
+    id: 'web3',
+    category: 'Web3 & Blockchain',
+    categoryEn: 'Web3 & On-Chain Forensics',
+    color: '#8b5cf6',
+    badge: 'ON-CHAIN',
+    glyph: '[WEB3]',
+    description: {
+      id: 'Riset protokol on-chain, forensik transaksi dompet, pembuatan PoC Foundry, dan pengujian audit EVM/Solana.',
+      en: 'On-chain protocol research, transaction forensics, Foundry PoC generation, and EVM/Solana ecosystem testing.',
+    },
+    skills: [
+      'Crypto Agent Orchestration',
+      'Solana / EVM Ecosystem Audit',
+      'On-Chain Forensics',
+      'Foundry PoC',
+      'Smart Contract Exploration',
+    ],
+  },
+  {
+    id: 'content-seo',
+    category: 'Content / SEO',
+    categoryEn: 'Content Strategy & Technical SEO',
+    color: '#10b981',
+    badge: 'SEO & COPY',
+    glyph: '[SEO]',
+    description: {
+      id: 'Penulisan artikel opini publik, strategi SEO pariwisata, dan penulisan organik bernuansa manusiawi bebas AI slop.',
+      en: 'Published editorial essays, travel/hospitality SEO strategy, and authentic human-centered anti-AI-slop writing.',
+    },
+    skills: [
+      'Mojok.co Writer',
+      'IndonesiaHoliday & DreamHolidays',
+      'Villa & Travel Sector SEO',
+      'Humanizer & Anti-AI-Slop Writing',
+      'Technical On-Page SEO',
+    ],
+  },
+  {
+    id: 'infra',
+    category: 'Infra & DevOps',
+    categoryEn: 'Infrastructure & Linux',
+    color: '#0284c7',
+    badge: 'INFRA',
+    glyph: '[SYS]',
+    description: {
+      id: 'Konfigurasi pengamanan server mandiri (VPS), pengawasan jaringan, dan manajemen kontrol versi Git terstandar.',
+      en: 'Self-hosted VPS hardening, security reconnaissance, and standardized Git version control workflows.',
+    },
+    skills: [
+      'VPS Hardening',
+      'Security Reconnaissance',
+      'Git & GitHub Workflows',
+      'Linux Server Administration',
+      'Cloud Deployment & CI Basics',
+    ],
+  },
+  {
+    id: 'productivity',
+    category: 'Productivity',
+    categoryEn: 'Productivity Systems & Data',
+    color: '#d97706',
+    badge: 'WORKFLOW',
+    glyph: '[DATA]',
+    description: {
+      id: 'Penyusunan basis data pengetahuan terstruktur, otomasi dokumen kerja, dan pemetaan data geografis.',
+      en: 'Structured knowledge base systems, document automation workflows, and geographic data mapping.',
+    },
+    skills: [
+      'Notion Databases',
+      'Airtable & Sheets Systems',
+      'Google Workspace',
+      'PowerPoint Pitch Decks',
+      'OCR & Document Extraction',
+      'Obsidian & Digital PKM',
+      'Maps & Geographic Data',
+    ],
+  },
+  {
+    id: 'media',
+    category: 'Media & Creative',
+    categoryEn: 'Visual Media & Assets',
+    color: '#ec4899',
+    badge: 'CREATIVE',
+    glyph: '[MEDIA]',
+    description: {
+      id: 'Produksi aset grafis, infografis komunikatif, integrasi text-to-speech, dan kurasi aset visual digital.',
+      en: 'Visual graphic production, communicative infographics, text-to-speech audio pipelines, and multimedia curation.',
+    },
+    skills: [
+      'Desain Grafis & Vektor',
+      'Infografis Edukatif',
+      'Text-to-Speech (TTS) Pipeline',
+      'Video Editing Basics',
+      'Curated Media & Search Asset Sourcing',
+    ],
+  },
 ];
