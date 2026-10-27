@@ -460,7 +460,7 @@ export const instagramData = [
 export const signpostLinks = [
   { title: 'Work', href: '#work', bg: '#93c5fd', text: '#1a1a2e', icon: '\u25C6' },
   { title: 'Experience', href: '#experience', bg: '#f97316', text: '#fff', icon: '\u2736' },
-  { title: 'Skills', href: '#skills', bg: '#8b5cf6', text: '#fff', icon: '\u25C8' },
+  { title: 'AI Agent', href: '#skills', bg: '#8b5cf6', text: '#fff', icon: '\u25C8' },
   { title: 'Articles', href: '#articles', bg: '#22c55e', text: '#fff', icon: '\u25CF' },
   { title: 'Instagram', href: '#instagram', bg: '#ec4899', text: '#fff', icon: '✦' },
   { title: 'LinkedIn', href: 'https://www.linkedin.com/in/muhammad-aklilul-hikam-541019331/', bg: '#3b82f6', text: '#fff', icon: '\u2605', external: true },
@@ -470,11 +470,12 @@ export const signpostLinks = [
 // Highlight Feature: AI Agent Hermes Exploration
 export const aiAgentHighlight = {
   badge: 'AUTONOMOUS WORKFLOWS',
-  title: 'Eksplorasi AI Agent Menggunakan Hermes',
-  titleEn: 'Autonomous AI Agent Exploration (Hermes)',
+  title: 'Exploring AI Agent Menggunakan Hermes',
+  titleEn: 'Exploring Autonomous AI Agent (Hermes Framework)',
+  screenshot: '/images/ai-agent-hermes.png',
   subtitle: {
-    id: 'Eksplorasi orkestrasi agent otonom untuk otomasi multi-task, scraping data cerdas, dan penyelesaian masalah teknis terstruktur.',
-    en: 'Orchestrating autonomous agents for multi-step workflow automation, intelligent data extraction, and structured technical problem solving.',
+    id: 'Eksplorasi orkestrasi agent otonom untuk otomasi alur kerja multi-tahap, scraping data cerdas, recon keamanan otomatis, dan penyelesaian masalah teknis terstruktur.',
+    en: 'Orchestrating autonomous agents via Hermes for multi-step workflow automation, intelligent data extraction, automated security recon, and structured technical problem solving.',
   },
   capabilities: [
     {

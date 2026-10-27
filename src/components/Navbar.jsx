@@ -8,7 +8,7 @@ export default function Navbar() {
   const navLinks = [
     { label: lang === 'id' ? 'Karya' : 'Work', href: '#work' },
     { label: lang === 'id' ? 'Pengalaman' : 'Experience', href: '#experience' },
-    { label: lang === 'id' ? 'Keahlian' : 'Skills', href: '#skills' },
+    { label: 'Exploring AI Agent', shortLabel: 'AI Agent', href: '#skills' },
     { label: lang === 'id' ? 'Artikel' : 'Articles', href: '#articles' },
     { label: lang === 'id' ? 'Instagram' : 'Instagram', href: '#instagram' },
     { label: lang === 'id' ? 'Kontak' : 'Contact', href: '#contact' },
@@ -41,9 +41,10 @@ export default function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              className="text-xs sm:text-sm font-display font-medium text-stone-800 hover:text-blue-casual transition-colors"
+              className="text-xs sm:text-sm font-display font-medium text-stone-800 hover:text-blue-casual transition-colors whitespace-nowrap"
             >
-              {link.label}
+              <span className="hidden xl:inline">{link.label}</span>
+              <span className="xl:hidden">{link.shortLabel || link.label}</span>
             </a>
           ))}
         </nav>
